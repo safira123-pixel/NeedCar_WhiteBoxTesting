@@ -29,6 +29,8 @@ Auth::routes();
 // Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
   Route::get('/homepage', [HomepageController::class,'index']);
+  Route::get('/homepage/login', [HomepageController::class,'login']);
+  Route::get('/homepage/register', [HomepageController::class,'register']);
   Route::get('/customer', [CustomerController::class,'index'])->name('customer');
   Route::get('/homepage/about', [HomepageController::class, 'about'])->name('about');
   Route::get('homepage/testimonials', [HomepageController::class, 'testimonials'])->name('testimonials');

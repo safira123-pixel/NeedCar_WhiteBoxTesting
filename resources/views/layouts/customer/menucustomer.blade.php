@@ -42,7 +42,7 @@
                 <h7 style="color:#222"> Are You gonna Log Out? </h7>
             </div>
             <div class="modal-footer">
-            <a class="btn" href="/" target="log out">Yes</a>
+            <a class="btn" href="/homepage" target="log out">Yes</a>
           </div>
             </div>
         </div>

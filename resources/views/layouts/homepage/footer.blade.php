@@ -45,7 +45,7 @@
 <div class="widget no-box">
 <h5 class="widget-title">Get Started<span></span></h5>
 <p>Join us and get access to our page now.</p>
-<a class="btn" href="{{ route('register') }}" target="registrasi">Join Us</a>
+<a class="btn" href="/homepage/register" target="registrasi">Join Us</a>
 </div>
 </div>
 
