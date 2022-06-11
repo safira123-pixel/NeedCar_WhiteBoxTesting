@@ -1,6 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomepageController;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\MerkController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,10 +20,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('homepage.index')->name('homepage');
+// });
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+  Route::get('/homepage', [HomepageController::class,'index']);
+  Route::get('/customer', [CustomerController::class,'index'])->name('customer');
+  Route::get('/homepage/about', [HomepageController::class, 'about'])->name('about');
+  Route::get('homepage/testimonials', [HomepageController::class, 'testimonials'])->name('testimonials');
+  Route::get('/customer/about', [CustomerController::class, 'about']);
+  Route::get('customer/testimonials', [CustomerController::class, 'testimonials'])->name('testimonials');
+
+  Route::group(['prefix' => 'admin'], function() {
+      Route::get('/home', [DashboardController::class, 'index'])->name('dashboard');
+  
+    });
