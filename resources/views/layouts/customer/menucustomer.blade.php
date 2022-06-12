@@ -1,4 +1,5 @@
-<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+<link rel="stylesheet" href="{{ asset('js/fontawesome-free/css/all.min.css') }}">
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
   <div class="container">
   <a class="navbar-brand" href="/customer"><i class='fas fa-car nav-icon'></i> NEED-A-CAR</a>

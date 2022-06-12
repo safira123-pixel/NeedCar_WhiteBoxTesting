@@ -39,5 +39,6 @@ Auth::routes();
 
   Route::group(['prefix' => 'admin'], function() {
       Route::get('/home', [DashboardController::class, 'index'])->name('dashboard');
-  
+      Route::get('/profile', [DashboardController::class, 'profile']);
+
     });

@@ -1,7 +1,7 @@
 <nav class="mt-2">
   <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
   <li class="nav-item">
-      <a href="#" class="nav-link">
+      <a href="/admin/home" class="nav-link">
         <p>
           Dashboard
         </p>
@@ -86,7 +86,8 @@
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="/"><p>Sign Out</p>
+      <a class="nav-link" href="/homepage"><p>Sign Out<i class="right fas fa-angle-left"></i>
+</p>
       </a>
     </li>
   </ul>
