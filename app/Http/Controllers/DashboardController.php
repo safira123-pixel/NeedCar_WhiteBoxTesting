@@ -10,4 +10,9 @@ class DashboardController extends Controller
         $data = array('title' => 'Dashboard');
         return view('dashboard.index', $data);
     }
+
+    public function profile() {
+        $data = array('title' => 'Admin Profile');
+        return view('dashboard.profile', $data);
+    }
 }
