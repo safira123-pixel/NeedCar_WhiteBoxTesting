@@ -14,8 +14,7 @@ class CreateCarTable extends Migration
     public function up()
     {
         Schema::create('car', function (Blueprint $table) {
-            $table->id('car_id');
-            $table->foreign('merk_id')->references('merk_id')->on('merk');
+            $table->id();
             $table->string('name')->unique();
             $table->string('license_number');
             $table->string('color');

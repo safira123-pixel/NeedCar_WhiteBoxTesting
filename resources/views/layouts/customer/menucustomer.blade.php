@@ -13,19 +13,16 @@
           <a class="nav-link" href="{{ url('/customer') }}"><i class='fas fas fa-home'></i> Homepage</a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link" href="#"><i class='fas fa-car-alt'></i> Find Car</a>
+          <a class="nav-link" href="/car"><i class='fas fa-car-alt'></i> Find Car</a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link" href="#"><i class='fas fas fa-shopping-basket'></i> Cart</a>
+          <a class="nav-link" href="/cart"><i class='fas fas fa-shopping-basket'></i> Cart</a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link" href="#"><i class='fas fas fas fa-tag'></i> Wishlist</a>
+          <a class="nav-link" href="/testimonials"><i class='fas fas fas fa-pen'></i> Testimonials</a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link" href="/"><i class='fas fas fas fa-pen'></i> Testimonial</a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="/"><i class='fas fas fas fa-user-circle'></i> User Profile</a>
+          <a class="nav-link" href="/contact_us"><i class='fas fas fas fa-user-circle'></i> Contact Us</a>
         </li>
         <li class="nav-item active">
           <a class="nav-link" href="#" data-toggle="modal" data-target="#exampleModalLong"><i class='fas fa-sign-out-alt'></i> Logout</a>

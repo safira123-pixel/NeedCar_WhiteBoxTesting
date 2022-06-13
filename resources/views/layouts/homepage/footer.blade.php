@@ -29,7 +29,7 @@
 <div class="thumb-content"><a href="{{ url('/homepage') }}">Homepage</a></div> 
 </li>
 <li>
-<div class="thumb-content"><a href="#.">Find Car</a></div> 
+<div class="thumb-content"><a href="/show/car">Find Car</a></div> 
 </li>
 <li>
 <div class="thumb-content"><a href="/homepage/about">About Us</a></div> 

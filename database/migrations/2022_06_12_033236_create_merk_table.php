@@ -14,7 +14,7 @@ class CreateMerkTable extends Migration
     public function up()
     {
         Schema::create('merk', function (Blueprint $table) {
-            $table->id('merk_id');
+            $table->id();
             $table->string('name');
             $table->timestamps();
         });

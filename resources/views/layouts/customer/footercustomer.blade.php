@@ -32,7 +32,7 @@
 <div class="thumb-content"><a href="{{ url('/customer') }}">Homepage</a></div> 
 </li>
 <li>
-<div class="thumb-content"><a href="#.">Find Car</a></div> 
+<div class="thumb-content"><a href="/car">Find Car</a></div> 
 </li>
 <li>
 <div class="thumb-content"><a href="{{ url('/customer/about') }}">About Us</a></div> 

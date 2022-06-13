@@ -14,9 +14,7 @@ class CreateTransactionTable extends Migration
     public function up()
     {
         Schema::create('transaction', function (Blueprint $table) {
-            $table->id('id_transaction')->unique();
-            $table->id('customer_id')->references('customer_id')->on('customer');
-            $table->id('car_id')->references('car_id')->on('car');
+            $table->id('id_transaction');
             $table->dateTime('rent_date');
             $table->dateTime('back_date');
             $table->dateTime('return_date');
