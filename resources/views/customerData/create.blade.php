@@ -1,4 +1,4 @@
-@extends('backend.layouts')
+@extends('layouts.dashboard.dashboard')
 @section('title','Tambah Data')
 @section('content')
 <div class="col-lg-12">
@@ -13,12 +13,6 @@
                 <div class="row">
                     <div class="col">
                         <div class="form-group">
-                          <label>NIK</label>
-                          <input type="text" name="nik" id="" class="form-control border-dark-50" required="">
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="form-group">
                           <label>Nama</label>
                           <input type="text" name="name" id="" class="form-control border-dark-50" required="">
                         </div>
@@ -31,21 +25,12 @@
                           <input type="text" name="address" id="" class="form-control border-dark-50" required="">
                         </div>
                     </div>
-                    <div class="col">
-                        <div class="form-group">
-                          <label>Jenis Kelamin</label>
-                          <select name="sex" class="form-control">
-                              <option value="laki-laki">Laki-Laki</option>
-                              <option value="perempuan">Perempuan</option>
-                          </select>
-                        </div>
-                    </div>
                 </div>
                 <div class="row">
                     <div class="col">
                         <div class="form-group">
                           <label>No Telp</label>
-                          <input type="text" name="phone_number" id="" class="form-control border-dark-50" required="">
+                          <input type="text" name="phone" id="" class="form-control border-dark-50" required="">
                         </div>
                     </div>
                     <div class="col">

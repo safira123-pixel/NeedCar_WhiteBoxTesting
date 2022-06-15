@@ -11,7 +11,6 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>NIK</th>
                         <th>Nama</th>
                         <th>No Telp</th>
                         <th>Action</th>
@@ -24,7 +23,7 @@
 @include('backend.customer.modal-show')
 @endsection
 @push('scripts')
-<script src="{{ asset('backend/js/sweet-alert.min.js') }}"></script>
+<script src="{{ asset('/js/sweet-alert.min.js') }}"></script>
 <script>
 $(document).ready(function () {
 
@@ -47,9 +46,8 @@ $(document).ready(function () {
          ajax: '{!! route('customer.source') !!}',
          columns: [
             {data: 'DT_RowIndex', name: 'DT_RowIndex',width:"2%", orderable : false},
-            {data: 'nik', name: 'nik',width:"5%", orderable : true},
             {data: 'name', name: 'name',width:"5%", orderable : true},
-            {data: 'phone_number', name: 'phone_number',width:"5%", orderable : false},
+            {data: 'phone', name: 'phone_number',width:"5%", orderable : false},
             {data: 'action', name: 'action',width:"2%", orderable : false}
          ]
      });
@@ -101,17 +99,13 @@ $(document).ready(function () {
         var name = button.data('name'); // Extract info from data-* attributes
         var address = button.data('address'); // Extract info from data-* attributes
         var email = button.data('email'); // Extract info from data-* attributes
-        var phone_number = button.data('phone_number'); // Extract info from data-* attributes
-        var sex = button.data('sex'); // Extract info from data-* attributes
-        var nik = button.data('nik'); // Extract info from data-* attributes
+        var phone_number = button.data('phone'); // Extract info from data-* attributes
         var modal = $(this)
 
         modal.find('input[name="name"]').val(name);
         modal.find('input[name="address"]').val(address);
-        modal.find('input[name="phone_number"]').val(phone_number);
+        modal.find('input[name="phone_number"]').val(phone);
         modal.find('input[name="email"]').val(email);
-        modal.find('input[name="sex"]').val(sex);
-        modal.find('input[name="nik"]').val(nik);
 
     });
 });

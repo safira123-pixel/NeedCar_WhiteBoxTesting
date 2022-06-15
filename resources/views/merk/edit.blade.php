@@ -1,4 +1,4 @@
-@extends('backend.layouts')
+@extends('layouts.dashboard.dashboard')
 @section('title','Ubah Data')
 @section('content')
 <div class="col-lg-12">
@@ -8,7 +8,7 @@
                 <h6 class="m-0 font-weight-bold text-primary">@yield('title')</h6>
         </div>
         <div class="card-body">
-            <form action="{{route('manufacture.update',$data->id)}}" method="post" enctype="multipart/form-data">
+            <form action="{{route('merk.update',$data->id)}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                     <div class="col">
@@ -23,7 +23,7 @@
                     <div class="col">
                         <div class="form-gorup">
                             <button type="submit" class="btn btn-primary shadow-sm">Simpan</button>
-                            <a class="btn btn-light shadow-sm" href="{{route('manufacture.index')}}">Batal</a>
+                            <a class="btn btn-light shadow-sm" href="{{route('merk.index')}}">Batal</a>
                         </div>
                     </div>
                 </div>

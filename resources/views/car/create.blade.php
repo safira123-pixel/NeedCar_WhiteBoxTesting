@@ -13,22 +13,22 @@
                     <div class="col">
                         <div class="form-group">
                           <label>Gambar</label>
-                          <input type="file" name="image[]" id="fileinput" class="form-control border-dark-50" required="" multiple>
+                          <input type="file" name="photo_car" id="fileinput" class="form-control border-dark-50" required="" multiple>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
                         <div class="form-group">
-                          <label>Nama</label>
+                          <label>Name</label>
                           <input type="text" name="name" id="" class="form-control border-dark-50" required="">
                         </div>
                     </div>
                     <div class="col">
                         <div class="form-group">
                           <label>Merk</label>
-                            <select name="manufacture_id" class="form-control select2">
-                                @foreach (App\Manufacture::orderBy('name','asc')->get() as $row)
+                            <select name="merk_id" class="form-control select2">
+                                @foreach (App\Models\Merk::orderBy('name','asc')->get() as $row)
                                 <option value="{{$row->id}}">{{title_case($row->name)}}</option>
                                 @endforeach
                             </select>
@@ -38,13 +38,13 @@
                 <div class="row">
                     <div class="col">
                         <div class="form-group">
-                          <label>Nomer Polisi</label>
+                          <label>Liscence Number</label>
                           <input type="text" name="license_number" id="" class="form-control border-dark-50" required="">
                         </div>
                     </div>
                     <div class="col">
                         <div class="form-group">
-                          <label>Tahun</label>
+                          <label>Year</label>
                           <input type="text" name="year" id="" class="form-control border-dark-50" required="">
                         </div>
                     </div>
@@ -52,21 +52,14 @@
                 <div class="row">
                     <div class="col">
                         <div class="form-group">
-                          <label>Sewa Perhari</label>
+                          <label>Rent per day</label>
                           <input type="text" name="price" id="" class="form-control border-dark-50" required="">
                         </div>
                     </div>
-                    <div class="col">
-                        <div class="form-group">
-                          <label>Denda Perhari</label>
-                          <input type="text" name="penalty" id="" class="form-control border-dark-50" required="">
-                        </div>
-                    </div>
-                </div>
                 <div class="row">
                     <div class="col">
                         <div class="form-group">
-                          <label>Warna</label>
+                          <label>Colour</label>
                           <input type="text" name="color" id="" class="form-control border-dark-50" required="">
                         </div>
                     </div>
@@ -75,8 +68,8 @@
                 <div class="row">
                     <div class="col">
                         <div class="form-gorup">
-                            <button type="submit" class="btn btn-primary  shadow-sm">Simpan</button>
-                            <a class="btn btn-light shadow-sm" href="{{route('car.index')}}">Batal</a>
+                            <button type="submit" class="btn btn-primary  shadow-sm">Save</button>
+                            <a class="btn btn-light shadow-sm" href="{{route('car.index')}}">Delete</a>
                         </div>
                     </div>
                 </div>

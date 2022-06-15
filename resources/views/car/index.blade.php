@@ -110,7 +110,6 @@ $(document).ready(function () {
         var color = button.data('color'); // Extract info from data-* attributes
         var license_number = button.data('license_number'); // Extract info from data-* attributes
         var price = button.data('price'); // Extract info from data-* attributes
-        var penalty = button.data('penalty'); // Extract info from data-* attributes
 
         var url = "{!! route('manufacture.find',':id') !!}";
         url = url.replace(':id',button.data('manufacture_id'));
@@ -130,7 +129,7 @@ $(document).ready(function () {
                 image = image.replace('image',value.image);
                 $('.gambar').append(
                     '<div class="carousel-item '+active+'">'+
-                        '<img src="'+image+'" alt="{{asset("backend/img/logo.png")}}" class="d-block w-100">'+
+                        '<img src="'+image+'" alt="{{asset("img/logo.png")}}" class="d-block w-100">'+
                 '</div>');
             });
         });

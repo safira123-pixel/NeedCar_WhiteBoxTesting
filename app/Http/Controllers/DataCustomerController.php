@@ -2,48 +2,58 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Merk;
+use App\Models\Customer;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 
 
-class MerkController extends Controller
+class DataCustomerController extends Controller
 {
 
     public function __construct()
     {
-        $this->merk = new Merk();
+        $this->customer = new Customer();
     }
 
     public function index()
     {
-        return view('merk.index');
+        return view('customer.index');
     }
 
     public function source(){
-        $query= Merk::query();
+        $query= Customer::query();
         return DataTables::eloquent($query)
         ->filter(function ($query) {
             if (request()->has('search')) {
                 $query->where(function ($q) {
-                    $q->where('name', 'LIKE', '%' . request('search')['value'] . '%');
+                    $q->where('name', 'LIKE', '%' . request('search')['value'] . '%')
+                    ->orWhere('address', 'LIKE', '%' . request('search')['value'] . '%');
                 });
             }
+            })
+            ->addColumn('address', function ($data) {
+                return str_limit($data->address,30);
             })
             ->addColumn('name', function ($data) {
                 return title_case($data->name);
             })
+            ->addColumn('email', function ($data) {
+                return $data->email;
+            })
+            ->addColumn('phone', function ($data) {
+                return title_case($data->phone_number);
+            })
             ->addIndexColumn()
-            ->addColumn('action', 'merk.index-action')
+            ->addColumn('action', 'customer.index-action')
             ->rawColumns(['action'])
             ->toJson();
     }
 
     public function create()
     {
-        return view('backend.merk.create');
+        return view('customer.create');
     }
 
     public function store(Request $request)
@@ -51,9 +61,9 @@ class MerkController extends Controller
         DB::beginTransaction();
         try {
             $requset = $request->merge(['slug'=>$request->name]);
-            $this->merk->create($request->all());
+            $this->customer->create($request->all());
             DB::commit();
-            return redirect()->route('merk.index')->with('success-message','Data telah disimpan');
+            return redirect()->route('customer.index')->with('success-message','Data telah disimpan');
         } catch (\Exception $e) {
             DB::rollback();
             return redirect()->back()->with('error-message',$e->getMessage());
@@ -63,15 +73,15 @@ class MerkController extends Controller
 
     public function show($id)
     {
-        $data = $this->merk->find($id);
+        $data = $this->customer->find($id);
         return $data;
 
     }
 
     public function edit($id)
     {
-        $data = $this->merk->find($id);
-        return view('merk.edit',compact('data'));
+        $data = $this->customer->find($id);
+        return view('customer.edit',compact('data'));
 
     }
 
@@ -80,9 +90,9 @@ class MerkController extends Controller
         DB::beginTransaction();
         try {
             $request = $request->merge(['slug'=>$request->name]);
-            $this->merk->find($id)->update($request->all());
+            $this->customer->find($id)->update($request->all());
             DB::commit();
-            return redirect()->route('merk.index')->with('success-message','Data telah d irubah');
+            return redirect()->route('customer.index')->with('success-message','Data telah d irubah');
         } catch (\Exception $e) {
             DB::rollback();
             return redirect()->back()->with('error-message',$e->getMessage());
@@ -92,20 +102,16 @@ class MerkController extends Controller
 
     public function destroy($id)
     {
-        $this->merk->destroy($id);
-        return redirect()->route('merk.index')->with('success-message','Data telah dihapus');
+        $this->customer->destroy($id);
+        return redirect()->route('customer.index')->with('success-message','Data telah dihapus');
     }
 
-    public function getmerk(Request $request){
+    public function getCustomer(Request $request){
         if ($request->has('search')) {
             $cari = $request->search;
-    		$data = $this->merk->where('name', 'LIKE', '%'.$cari.'%')->get();
+    		$data = $this->customer->where('name', 'LIKE', '%'.$cari.'%')->get();
             return response()->json($data);
     	}
-    }
-
-    public function find($id){
-        return $this->merk->find($id);
     }
 
 }

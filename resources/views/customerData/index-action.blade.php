@@ -1,8 +1,6 @@
 <span data-toggle="modal" data-target="#show" data-name="{{$name}}"
-    data-nik="{{$nik}}"
     data-address="{{$address}}"
-    data-sex="{{$sex}}"
-    data-phone_number="{{$phone_number}}"
+    data-phone_number="{{$phone}}"
     data-email="{{$email}}">
     <a href="#"
         class="btn btn-info btn-sm shadow-sm"

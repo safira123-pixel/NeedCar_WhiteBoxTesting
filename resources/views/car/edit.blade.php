@@ -17,7 +17,7 @@
                         </div>
                         <div class="form-group">
                             <label>Gambar</label>
-                            <input type="file" name="image[]" id="edit-file" multiple>
+                            <input type="file" name="photo_car" id="edit-file" multiple>
                         </div>
                     </div>
                 </div>
@@ -60,13 +60,6 @@
                               <input type="text" name="price" value="{{$data->price}}" class="form-control border-dark-50" required="">
                             </div>
                         </div>
-                        <div class="col">
-                            <div class="form-group">
-                              <label>Denda Perhari</label>
-                              <input type="text" name="penalty" value="{{$data->penalty}}" class="form-control border-dark-50" required="">
-                            </div>
-                        </div>
-                    </div>
                     <div class="row">
                         <div class="col">
                             <div class="form-group">

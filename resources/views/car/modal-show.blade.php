@@ -78,12 +78,6 @@
                                 <input type="text" name="price" class="form-control" readonly="">
                             </div>
                         </div>
-                        <div class="col">
-                            <div class="form-group">
-                                <label>Denda per hari</label>
-                                <input type="text" name="penalty" class="form-control" readonly="">
-                            </div>
-                        </div>
                     </div>
 
                 </div>
