@@ -32,4 +32,4 @@ class CreateCustomerTable extends Migration
     {
         Schema::dropIfExists('customer');
     }
-}
+} 
