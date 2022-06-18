@@ -35,12 +35,12 @@
   </div>
   <!-- end carousel -->
 
-  <!-- produk -->
+  <!-- Prodduk car -->
   <div class="row mt-4">
     <div class="col col-md-12 col-sm-12 mb-4">
       <h2 class="text-center">-- List Of Car Units --</h2>
     </div>
-    <!-- produk pertama -->
+    <!-- produk pertama --> 
     <div class="col-md-4">
       <div class="card mb-4 shadow-sm">
           <img src="{{asset('images/Honda.jpg') }}" alt="foto produk" class="card-img-top">
