@@ -17,6 +17,7 @@ class AddForeignKey extends Migration
             $table->unsignedBigInteger('merk_id')->nullable();
             $table->foreign('merk_id')->references('id')->on('merk')->onDelete('cascade');
         });
+
     }
 
     /**

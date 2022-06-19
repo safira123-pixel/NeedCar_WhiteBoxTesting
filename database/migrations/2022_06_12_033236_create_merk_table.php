@@ -8,15 +8,15 @@ class CreateMerkTable extends Migration
 {
     /**
      * Run the migrations.
-     *
+     * 
      * @return void
      */
     public function up()
     {
         Schema::create('merk', function (Blueprint $table) {
             $table->id();
-            $table->string('name_merk');
-            $table->timestamps();
+            $table->string('name');
+            $table->timestamps(); 
         });
     }
 
