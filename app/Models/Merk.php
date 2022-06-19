@@ -10,5 +10,5 @@ class Merk extends Model
     use HasFactory;
     protected $table = 'merk';
     protected $dates = ['deleted_at'];
-    protected $fillable = ['name'];
+    protected $fillable = ['name_merk'];
 }

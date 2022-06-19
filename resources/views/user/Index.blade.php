@@ -4,10 +4,9 @@
 <div class="row">
   <div class="col-lg-12 margin-tb">
     <div class="pull-left mt-2">
-      <h2>MERK DATA</h2>
+      <h2>USER DATA</h2>
     </div>
     <div class="float-right my-2">
-      <a class="btn btn-success" href="{{ route('merk.create') }}"> Input merk</a>
     </div>
   </div>
 </div>
@@ -25,10 +24,10 @@
 <table class="table table-bordered">
   <tr>
     <th>Name</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th>Address</th>
     <th width="280px">Action</th>
   </tr>
 </table>
-
-{!! $paginate->links() !!}
-
 @endsection

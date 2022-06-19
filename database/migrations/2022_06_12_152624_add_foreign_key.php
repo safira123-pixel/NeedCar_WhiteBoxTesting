@@ -17,17 +17,6 @@ class AddForeignKey extends Migration
             $table->unsignedBigInteger('merk_id')->nullable();
             $table->foreign('merk_id')->references('id')->on('merk')->onDelete('cascade');
         });
-
-        Schema::table('transaction', function (Blueprint $table) {
-            $table->unsignedBigInteger('car_id')->nullable();
-            $table->foreign('car_id')->references('id')->on('car')->onDelete('cascade');
-        });
-
-        Schema::table('transaction', function (Blueprint $table) {
-            $table->unsignedBigInteger('customer_id')->nullable();
-            $table->foreign('customer_id')->references('id')->on('customer')->onDelete('cascade');
-        });
-
     }
 
     /**

@@ -1,32 +1,30 @@
 @extends('layouts.dashboard.dashboard')
-@section('title','Tambah Data')
 @section('content')
-<div class="col-lg-12">
-    {{-- <div class="card border-left-primary"> --}}
-    <div class="card mb-4">
-        <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">@yield('title')</h6>
-        </div>
-        <div class="card-body">
-            <form action="{{route('merk.store')}}" method="post" enctype="multipart/form-data">
-                @csrf
-                <div class="row">
-                    <div class="col">
-                        <div class="form-group">
-                          <label>Nama</label>
-                          <input type="text" name="name" id="" class="form-control border-dark-50" required="">
-                        </div>
-                    </div>
+<div class="container mt-5">
+    <div class="row justify-content-center align-items-center">
+        <div class="card" style="width: 24rem;">
+                <div class="card-header">Merk Data</div>
+            <div class="card-body">
+
+                @if ($errors->any())
+                <div class="alert alert-danger">
+                    <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
                 </div>
-                <div class="row">
-                    <div class="col">
-                        <div class="form-gorup">
-                            <button type="submit" class="btn btn-primary shadow-sm">Simpan</button>
-                            <a class="btn btn-light shadow-sm" href="{{route('merk.index')}}">Batal</a>
-                        </div>
+                @endif
+                <form method="post" action="{{ route('merk.store') }}" enctype="multipart/form-data" id="myForm">
+                    @csrf
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="name" name="name" class="form-control" id="name" aria-describedby="name" >
                     </div>
-                </div>
-            </form>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
         </div>
     </div>
 </div>

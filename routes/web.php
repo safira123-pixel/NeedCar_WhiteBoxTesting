@@ -8,6 +8,11 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MerkController;
 use App\Http\Controllers\TestimonialsController;
+use App\Http\Controllers\CarController;
+use App\Http\Controllers\ContactUsController;
+use App\Http\Controllers\TransactionController;
+
+
 
 
 /*
@@ -55,4 +60,8 @@ Auth::routes();
     });
 
   });
+
+Route::resource('car', CarController::class);
+Route::get('/page', [CarController::class, 'page']);
+Route::get('/search', [CarController::class, 'search']);
     

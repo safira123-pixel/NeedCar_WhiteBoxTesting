@@ -17,7 +17,6 @@ class CreateCarTable extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->string('license_number');
-            $table->string('color');
             $table->string('year');
             $table->string('status');
             $table->integer('price');

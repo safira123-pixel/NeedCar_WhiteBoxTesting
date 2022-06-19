@@ -10,29 +10,29 @@ class MerkSeeder extends Seeder
 {
     /**
      * Run the database seeds.
-     * 'Toyota','Suzuki','Honda','Mercedes-Benz','BMW','Daihatsu','Nissan','Isuzu','KIA','Mitsubishi','Datsun','Mazda','Hyundai','Chevrolet'
+     * Name Merk : 'Toyota','Suzuki','Honda','Mercedes-Benz','BMW','Daihatsu','Nissan','Isuzu','KIA','Mitsubishi','Datsun','Mazda','Hyundai','Chevrolet'
      * @return void
      */
     public function run()
     {
         DB::table('merk')->insert([
-            'name' => 'Toyota',
+            'name_merk' => 'Toyota',
         ]);
 
         DB::table('merk')->insert([
-            'name' => 'Suzuki',
+            'name_merk' => 'Suzuki',
         ]);
 
         DB::table('merk')->insert([
-            'name' => 'Honda',
+            'name_merk' => 'Honda',
         ]);
 
         DB::table('merk')->insert([
-            'name' => 'Mitsubishi',
+            'name_merk' => 'Mitsubishi',
         ]);
 
         DB::table('merk')->insert([
-            'name' => 'BMW',
+            'name_merk' => 'BMW',
         ]);
     }
 }

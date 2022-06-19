@@ -1,107 +1,61 @@
 @extends('layouts.dashboard.dashboard')
-@section('title','Tambah Data')
 @section('content')
-<div class="col-lg-12">
-    <div class="card mb-4">
-        <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">@yield('title')</h6>
-        </div>
-        <div class="card-body">
-            <form action="{{route('car.store')}}" method="post" enctype="multipart/form-data">
-                @csrf
-                <div class="row">
-                    <div class="col">
-                        <div class="form-group">
-                          <label>Gambar</label>
-                          <input type="file" name="photo_car" id="fileinput" class="form-control border-dark-50" required="" multiple>
-                        </div>
-                    </div>
+<div class="container mt-5">
+    <div class="row justify-content-center align-items-center">
+        <div class="card" style="width: 24rem;">
+                <div class="card-header">
+                    Data Mobil 
                 </div>
-                <div class="row">
-                    <div class="col">
-                        <div class="form-group">
-                          <label>Name</label>
-                          <input type="text" name="name" id="" class="form-control border-dark-50" required="">
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="form-group">
-                          <label>Merk</label>
-                            <select name="merk_id" class="form-control select2">
-                                @foreach (App\Models\Merk::orderBy('name','asc')->get() as $row)
-                                <option value="{{$row->id}}">{{title_case($row->name)}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <div class="form-group">
-                          <label>Liscence Number</label>
-                          <input type="text" name="license_number" id="" class="form-control border-dark-50" required="">
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="form-group">
-                          <label>Year</label>
-                          <input type="text" name="year" id="" class="form-control border-dark-50" required="">
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <div class="form-group">
-                          <label>Rent per day</label>
-                          <input type="text" name="price" id="" class="form-control border-dark-50" required="">
-                        </div>
-                    </div>
-                <div class="row">
-                    <div class="col">
-                        <div class="form-group">
-                          <label>Colour</label>
-                          <input type="text" name="color" id="" class="form-control border-dark-50" required="">
-                        </div>
-                    </div>
-                </div>
+            <div class="card-body">
 
-                <div class="row">
-                    <div class="col">
-                        <div class="form-gorup">
-                            <button type="submit" class="btn btn-primary  shadow-sm">Save</button>
-                            <a class="btn btn-light shadow-sm" href="{{route('car.index')}}">Delete</a>
-                        </div>
-                    </div>
+                @if ($errors->any())
+                <div class="alert alert-danger">
+                    <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
                 </div>
-            </form>
+                @endif
+                <form method="post" action="{{ route('mahasiswa.store') }}" enctype="multipart/form-data" id="myForm">
+                    @csrf
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="name" name="name" class="form-control" id="name" aria-describedby="name" >
+                    </div>
+                    <div class="form-group">
+                        <label for="liscense_number">Liscense Number</label>
+                        <input type="liscense_number" name="liscense_number" class="form-control" id="liscense_number" ariadescribedby="liscense_number" >
+                    </div>
+                    <div class="form-group">
+                        <label for="Merk">Merk</label>
+                        <select name= "Merk" class="form-control" id="Merk">
+                            @foreach($Merk as $mrk)
+                                <option value ="{{$mrk->id}}"> {{$mrk->name_merk}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="year">Year</label>
+                        <input type="year" name="year" class="form-control" id="year" ariadescribedby="year" >
+                    </div>
+                    <div class="form-group">
+                        <label for="status">Status</label>
+                        <input type="status" name="status" class="form-control" id="status" ariadescribedby="status" >
+                    </div>
+                    <div class="form-group">
+                        <label for="price">Price</label>
+                        <input type="price" name="price" class="form-control" id="price" ariadescribedby="price" >
+                    </div>                    
+                    <div class="form-group">
+                        <label for="file">File</label>
+                        <input type="file" name="carfile" class="form-control" id="file" ariadescribedby="file" >
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
         </div>
     </div>
 </div>
 @endsection
-@push('scripts')
-<script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
-<script>
-    $('.select2').select2({
-            dropdownParent: $('body'),
-            theme: 'bootstrap'
-    });
-
-    $('#fileinput').fileinput({
-        uploadUrl:'#',
-          browseClass: "btn btn-primary btn-block",
-          fileActionSettings:{
-            showZoom:false,
-            showUpload:false,
-            removeClass: "btn btn-danger",
-            removeIcon: "<i class='fa fa-trash'></i>"
-          },
-          showCaption: false,
-          showRemove: false,
-          showUpload: false,
-          showCancel: false,
-          dropZoneEnabled: false,
-          allowedFileExtensions: ['jpg', 'png','jpeg'],
-    });
-</script>
-
-@endpush

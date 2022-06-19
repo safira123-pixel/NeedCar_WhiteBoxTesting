@@ -1,34 +1,35 @@
 @extends('layouts.dashboard.dashboard')
-@section('title','Ubah Data')
+
 @section('content')
-<div class="col-lg-12">
-    {{-- <div class="card border-left-primary"> --}}
-    <div class="card mb-4">
-        <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">@yield('title')</h6>
+
+<div class="container mt-5">
+    <div class="row justify-content-center align-items-center">
+        <div class="card" style="width: 24rem;">
+        <div class="card-header">
+            Edit Merk
         </div>
         <div class="card-body">
-            <form action="{{route('merk.update',$data->id)}}" method="post" enctype="multipart/form-data">
+            @if ($errors->any())
+            <div class="alert alert-danger">
+                <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
+            <form method="post" action="{{ route('merk.update', $merk->name) }}" enctype="multipart/form-data" id="myForm">
                 @csrf
-                <div class="row">
-                    <div class="col">
-                        <div class="form-group">
-                          <label>Nama</label>
-                          <input type="text" name="name" value="{{$data->name}}" class="form-control border-dark-50" required="">
-                        </div>
-                    </div>
+                @method('PUT')
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" class="form-control" id="name" value="{{ $merk->name }}" aria-describedby="name" >
                 </div>
-
-                <div class="row">
-                    <div class="col">
-                        <div class="form-gorup">
-                            <button type="submit" class="btn btn-primary shadow-sm">Simpan</button>
-                            <a class="btn btn-light shadow-sm" href="{{route('merk.index')}}">Batal</a>
-                        </div>
-                    </div>
-                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
     </div>
+</div>
 </div>
 @endsection
