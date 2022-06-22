@@ -1,4 +1,4 @@
-@extends('layouts.dashboard.dashboard')
+@extends('layouts.dashboard')
 @section('content')
 <div class="row mt-4">
     <!-- profil pertama -->

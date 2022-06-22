@@ -14,9 +14,9 @@ class Transaction extends Model
     protected $fillable = ['car_id','customer_id','rent_date','back_date','return_date','price','amount','penalty','status'];
     public $incrementing = false;
 
-    public function customer()
+    public function user()
     {
-        return $this->belongsTo('App\Models\Customer');
+        return $this->belongsTo('App\Models\User');
     }
 
     public function car()

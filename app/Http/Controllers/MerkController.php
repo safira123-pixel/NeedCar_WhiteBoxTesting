@@ -17,95 +17,81 @@ class MerkController extends Controller
         $this->merk = new Merk();
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        return view('merk.index');
-    }
-
-    public function source(){
-        $query= Merk::query();
-        return DataTables::eloquent($query)
-        ->filter(function ($query) {
-            if (request()->has('search')) {
-                $query->where(function ($q) {
-                    $q->where('name', 'LIKE', '%' . request('search')['value'] . '%');
-                });
-            }
-            })
-            ->addColumn('name', function ($data) {
-                return title_case($data->name);
-            })
-            ->addIndexColumn()
-            ->addColumn('action', 'merk.index-action')
-            ->rawColumns(['action'])
-            ->toJson();
+        $merk = Merk::get();
+        $data = array('title' => 'Merk Home');
+        $paginate = merk::orderBy('id', 'asc')->paginate(3);
+        return view('merk.index', ['merk' => $merk,'paginate'=>$paginate], $data);
     }
 
     public function create()
-    {
-        return view('backend.merk.create');
+    {        
+        $data = array('title' => 'Merk Form');
+        return view('merk.create', $data);
     }
 
     public function store(Request $request)
     {
-        DB::beginTransaction();
-        try {
-            $requset = $request->merge(['slug'=>$request->name]);
-            $this->merk->create($request->all());
-            DB::commit();
-            return redirect()->route('merk.index')->with('success-message','Data telah disimpan');
-        } catch (\Exception $e) {
-            DB::rollback();
-            return redirect()->back()->with('error-message',$e->getMessage());
-        }
+        $this->validate($request, [
+            'merk_code' => 'required|unique:merk',
+            'merk_name'=>'required',
+            'merk_slug' => 'required',
+            'merk_description' => 'required',
+            'merk_status' => 'required',
+            'merk_photo' => 'required'
+        ]);
+        $merk = new Merk;
+        $merk->merk_code = $request->get('merk_code');
+        $merk->merk_name = $request->get('merk_name');
+        $merk->merk_slug = $request->get('merk_slug');
+        $merk->merk_description = $request->get('merk_description');
+        $merk->merk_status = $request->get('merk_status');
+        $merk->merk_photo = $image_name ;
+        $merk->save();
 
-    }
-
-    public function show($id)
-    {
-        $data = $this->merk->find($id);
-        return $data;
+        return redirect()->route('merk.index')
+        ->with('success', 'Merk Added!');
 
     }
 
     public function edit($id)
     {
-        $data = $this->merk->find($id);
-        return view('merk.edit',compact('data'));
-
+        $data = array('title' => 'Edit Form');
+        $merk = Merk::where('merk_code', $merk_code)->get();
+         return view('merk.edit', $data);
     }
 
     public function update(Request $request, $id)
     {
-        DB::beginTransaction();
-        try {
-            $request = $request->merge(['slug'=>$request->name]);
-            $this->merk->find($id)->update($request->all());
-            DB::commit();
-            return redirect()->route('merk.index')->with('success-message','Data telah d irubah');
-        } catch (\Exception $e) {
-            DB::rollback();
-            return redirect()->back()->with('error-message',$e->getMessage());
-        }
-
+        $this->validate($request, [
+            'merk_code'=>'required',
+            'merk_name'=>'required',
+            'merk_slug' => 'required',
+            'merk_description' => 'required',
+            'merk_status' => 'required',
+            'merk_photo' => 'required'
+        ]);
+        $merk = Merk::where('id', $id)->first();
+        $merk->merk_code = $request->get('merk_code');
+        $merk->merk_name = $request->get('merk_name');
+        $merk->merk_slug = $request->get('merk_slug');
+        $merk->merk_description = $request->get('merk_description');
+        $merk->merk_status = $request->get('merk_status');
+    
+        if($merk->merk_photo && file_exists(storage_path('./app/public/images'. $merk->merk_photo))){
+          Storage::delete(['./public/images', $merk->merk_photo]); }
+    
+      $image_name = $request->file('merk_photo')->store('image', 'public');
+      $merk->merk_photo = $image_name;
+        $merk->save();
     }
 
     public function destroy($id)
     {
-        $this->merk->destroy($id);
-        return redirect()->route('merk.index')->with('success-message','Data telah dihapus');
-    }
-
-    public function getmerk(Request $request){
-        if ($request->has('search')) {
-            $cari = $request->search;
-    		$data = $this->merk->where('name', 'LIKE', '%'.$cari.'%')->get();
-            return response()->json($data);
-    	}
-    }
-
-    public function find($id){
-        return $this->merk->find($id);
+        Merk::where('merk_code', $merk_code)->delete();
+ return redirect()->route('merk.index')
+ -> with('success', 'merk Deleted');
     }
 
 }

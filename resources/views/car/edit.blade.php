@@ -1,64 +1,93 @@
-@extends('layouts.dashboard.dashboard')
+@extends('layouts.dashboard')
 
 @section('content')
-
-<div class="container mt-5">
-    <div class="row justify-content-center align-items-center">
-        <div class="card" style="width: 24rem;">
+<div class="container-fluid">
+  <div class="row">
+    <div class="col col-lg-6 col-md-6">
+      <div class="card">
         <div class="card-header">
-            Edit Car
+          <h3 class="card-title">Form Edit</h3>
+          <div class="card-tools">
+            <a href="{{ route('car.index') }}" class="btn btn-sm btn-danger">
+              Tutup
+            </a>
+          </div>
         </div>
         <div class="card-body">
-            @if ($errors->any())
-            <div class="alert alert-danger">
-                <strong>Whoops!</strong> There were some problems with your input.<br><br>
-                <ul>
-                    @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
+          @if(count($errors) > 0)
+          @foreach($errors->all() as $error)
+              <div class="alert alert-warning">{{ $error }}</div>
+          @endforeach
+          @endif
+          @if ($message = Session::get('error'))
+              <div class="alert alert-warning">
+                  <p>{{ $message }}</p>
+              </div>
+          @endif
+          @if ($message = Session::get('success'))
+              <div class="alert alert-success">
+                  <p>{{ $message }}</p>
+              </div>
+          @endif
+          <form action="{{ route('car.update', $caritem->id) }}" method="post">
+            {{ method_field('patch') }}
+            @csrf
+            <div class="form-group">
+              <label for="car_id">car</label>
+              <select name="car_id" id="car_id" class="form-control">
+                <option value="">Choose car</option>
+                @foreach($caritem as $car)
+                <option value="{{ $car->id }}" {{ $caritem->car_id == $car->id ? 'selected' : ''}}>{{ $car->name_car }}</option>
+                @endforeach
+              </select>
             </div>
-            @endif
-            <form method="post" action="{{ route('car.update', $car->name) }}" enctype="multipart/form-data" id="myForm">
-                @csrf
-                @method('PUT')
+            <div class="form-group">
+              <label for="car_code">Code</label>
+              <input type="text" name="car_code" id="car_code" value={{ $caritem->car_code }} class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="car_name">Name</label>
+              <input type="text" name="car_name" id="car_name" value={{ $caritem->car_name }} class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="car_slug">Slug car</label>
+              <input type="text" name="car_slug" id="car_slug" value={{ $caritem->car_slug }} class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="car_description">Description</label>
+              <textarea name="car_description" id="car_description" cols="30" rows="5" class="form-control">{{ $caritem->car_description }}</textarea>
+            </div>
+            <div class="row">
+              <div class="col">
                 <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" name="name" class="form-control" id="name" value="{{ $car->name }}" aria-describedby="name" >
+                  <label for="car_amount">car amount</label>
+                  <input type="text" name="car_amount" id="car_amount" value={{ $caritem->car_amount }} class="form-control">
                 </div>
-                <div class="form-group">
-                    <label for="merk">Choose Merk</label>
-                    <select name="merk" class="form-control" id="merk">
-                        @foreach ($merk as $item)
-                        <option value="{{ $item->id }}" {{ ($car->merk_id == $item->id) ? 'selected' : '' }}>{{ $item->name_merk }}</option>
-                        @endforeach
-                    </select>
+              </div>
+            <div class="form-group">
+              <label for="car_price">car price</label>
+              <input type="text" name="car_price" id="car_price" value={{ $caritem->car_price }} class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="car_status">car status</label>
+              <select name="car_status" id="car_status" class="form-control">
+                <option value="publish" {{ $caritem->car_status == 'publish'? 'selected': ''}}>Publish</option>
+                <option value="unpublish" {{ $caritem->car_status == 'unpublish'? 'selected': ''}}>Unpublish</option>
+              </select>
+            </div>
+            div class="form-group">
+                    <label for="car_photo">File</label>
+                    <input type="file" name="car_photo" class="form-control" value="{{ $car->car_photo }}" id="File" ariadescribedby="File" >
+                    <img style="width: 100%" src="{{ asset('./images'. $car->car_photo) }}" alt="">
                 </div>
-                <div class="form-group">
-                    <label for="liscense_number">Liscense Number</label>
-                    <input type="liscense_number" name="liscense_number" class="form-control" id="liscense_number" value="{{ $car->liscense_number }}" aria-describedby="liscense_number" >
-                </div>
-                <div class="form-group">
-                    <label for="year">year</label>
-                    <input type="year" name="year" class="form-control" id="year" value="{{ $car->year }}" aria-describedby="year" >
-                </div>
-                <div class="form-group">
-                    <label for="status">status</label>
-                    <input type="status" name="status" class="form-control" id="status" value="{{ $car->status }}" aria-describedby="status" >
-                </div>
-                <div class="form-group">
-                    <label for="price">price</label>
-                    <input type="price" name="price" class="form-control" id="price" value="{{ $car->price }}" aria-describedby="price" >
-                </div>
-                <div class="form-group">
-                    <label for="File">File</label>
-                    <input type="file" name="carfile" class="form-control" value="{{ $car->photo_car }}" id="File" ariadescribedby="File" >
-                    <img style="width: 100%" src="{{ asset('./storage/'. $car->photo_car) }}" alt="">
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary">Update</button>
+              <button type="reset" class="btn btn-warning">Reset</button>
+            </div>
+          </form>
         </div>
+      </div>
     </div>
-</div>
+  </div>
 </div>
 @endsection

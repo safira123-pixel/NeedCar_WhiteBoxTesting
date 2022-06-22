@@ -11,10 +11,20 @@ class Car extends Model
 
     protected $table = 'car';
     protected $dates = ['deleted_at'];
-    protected $fillable = ['name','merk_id','license_number','color','year','status','price'];
+    protected $fillable = [
+        'merk_id',
+        'car_code',
+        'car_name',
+        'car_slug',
+        'car_description',
+        'car_photo',
+        'car_amount',
+        'car_price',
+        'car_status',
+    ];
 
-    public function merk()
-    {
-        return $this->belongsTo('App\Models\Merk');
+    public function merk() {
+        return $this->belongsTo('App\Models\Merk', 'merk_id');
     }
+
 }

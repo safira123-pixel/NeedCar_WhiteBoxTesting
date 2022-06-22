@@ -9,6 +9,13 @@ class Merk extends Model
 {
     use HasFactory;
     protected $table = 'merk';
-    protected $dates = ['deleted_at'];
-    protected $fillable = ['name_merk'];
+    protected $fillable = [
+        'merk_code',
+        'merk_name',
+        'merk_slug',
+        'merk_description',
+        'merk_status',
+        'merk_photo',
+    ];
+
 }

@@ -15,11 +15,14 @@ class CreateCarTable extends Migration
     {
         Schema::create('car', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
-            $table->string('license_number');
-            $table->string('year');
-            $table->string('status');
-            $table->integer('price');
+            $table->string('car_code')->unique();
+            $table->string('car_name')->unique();
+            $table->string('car_slug');
+            $table->text('car_description');
+            $table->string('car_photo')->nullable();
+            $table->double('car_amount', 12, 2)->default(0);
+            $table->double('car_price', 12, 2)->default(0);
+            $table->string('car_status');
             $table->timestamps();
         });
     }

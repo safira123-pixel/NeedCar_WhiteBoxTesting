@@ -23,5 +23,14 @@ class UserSeeder extends Seeder
             'password' => Hash::make('password'),
             'role' => 'admin',
         ]);
+
+        DB::table('users')->insert([
+            'name' => 'user',
+            'email' => 'user@gmail.com',
+            'phone' => '081370587320',
+            'address' => 'Jl. Simpang Pisang Kipas, Jatimulyo, Kec. Lowokwaru, Kota Malang, Jawa Timur 65141',
+            'password' => Hash::make('useruser'),
+            'role' => 'customer',
+        ]);
     }
 }

@@ -7,7 +7,8 @@
       <h2>Merk Data</h2>
     </div>
     <div class="float-right my-2">
-      <a class="btn btn-success" href="{{ route('merk.create') }}"> Create</a>
+      <a class="btn btn-info" href="{{ route('merk.index') }}"> Home</a>
+      <a class="btn btn-success" href="{{ route('merk.create') }}"> Input</a>
     </div>
   </div>
 </div>
@@ -40,14 +41,11 @@
         <td>{{ $mrk->merk_slug }}</td>
         <td>{{ $mrk->merk_description }}</td>
         <td>{{ $mrk->merk_description }}</td>
-        <td><img style="width: 80px; height: 80px; overflow: hidden" class="rounded-circle" src="{{ 
-          asset('./storage/'. $mrk->merk_photo) }}" alt=""></td>
-        <td>
           <form action="{{ route('merk.destroy',['merk'=>$mrk->merk_code]) }}" method="POST">
-            <a class="btn btn-primary" href="{{ route('merk.edit',$mrk->merk_code) }}">Edit</a>
+            <a class="btn btn-primary btn-sm" href="{{ route('merk.edit',$mrk->merk_code) }}">Edit</a>
             @csrf
             @method('DELETE')
-            <button type="submit" class="btn btn-danger">Delete</button>
+            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
           </form>
         </td>
       </tr>

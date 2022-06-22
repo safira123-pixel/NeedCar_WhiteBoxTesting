@@ -9,7 +9,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MerkController;
 use App\Http\Controllers\TestimonialsController;
 use App\Http\Controllers\CarController;
-use App\Http\Controllers\ContactUsController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\ContactController;
 
@@ -52,7 +52,22 @@ Auth::routes();
   Route::post('/testimonials-form', [App\Http\Controllers\TestimonialsController::class, 'storeTestimonialsForm'])->name('Testimonials-form.store');
 
   Route::group(['prefix' => 'admin'], function() {
-      Route::get('/profile', [DashboardController::class, 'profile']);
+    // route home admin
+    Route::get('/home', [DashboardController::class, 'index'])->name('admin home');
+    // route profile admin
+    Route::get('/profile', [DashboardController::class, 'profile']);
+    // route merk
+    Route::resource('merk', MerkController::class);
+    // route car
+    Route::resource('car', CarController::class);
+    // route customer
+     Route::resource('/DataCustomer', UserController::class);
+    // route transaction
+    // Route::resource('/transaction', [TransactionController::class]);
+    // form Report
+    // Route::get('/Report', [LaporanController::class, 'index']);
+    // process report
+    // Route::get('/reportProcess', [LaporanController::class, 'proses']);
 
     });
 
@@ -63,12 +78,9 @@ Auth::routes();
   // admin protected routes
   Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin'], function () {
     Route::group(['prefix' => 'admin'], function() {
-      Route::get('/home', [DashboardController::class, 'index']);
+      Route::get('/home', [DashboardController::class, 'index'])->name('admin home');
     });
 
   });
 
-Route::resource('car', CarController::class);
-Route::get('/page', [CarController::class, 'page']);
-Route::get('/search', [CarController::class, 'search']);
     
