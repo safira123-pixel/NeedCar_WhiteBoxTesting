@@ -12,11 +12,14 @@
         <li class="nav-item active">
           <a class="nav-link" href="{{ url('/customer') }}"><i class='fas fas fa-home'></i> Homepage</a>
         </li>
-        <li class="nav-item active">
+        <li class="nav-item active has-treeview">
           <a class="nav-link" href="/find-car"><i class='fas fa-car-alt'></i> Find Car</a>
         </li>
+        <li class="nav-item active has-treeview">
+          <a class="nav-link" href="customer/merk"><i class='fas fa-car-alt'></i> Find Merk</a>
+        </li>
         <li class="nav-item active">
-          <a class="nav-link" href="/cart"><i class='fas fas fa-shopping-basket'></i> Cart</a>
+          <a class="nav-link" href="/customer/cart"><i class='fas fas fa-shopping-basket'></i> Cart</a>
         </li>
         <li class="nav-item active">
           <a class="nav-link" href="/testimonials-form"><i class='fas fas fas fa-pen'></i> Testimonials</a>

@@ -45,6 +45,8 @@ Auth::routes();
   Route::get('/customer', [CustomerController::class, 'index'])->name('customer'); 
   Route::get('/customer/about', [CustomerController::class, 'about']);
   Route::get('customer/testimonials', [CustomerController::class, 'testimonials'])->name('testimonials');
+  Route::get('customer/merk', [CustomerController::class, 'customermerk'])->name('customermerk');
+
 
   Route::get('/contact-form', [App\Http\Controllers\ContactController::class, 'contactForm'])->name('contact-form');
   Route::post('/contact-form', [App\Http\Controllers\ContactController::class, 'storeContactForm'])->name('contact-form.store');

@@ -19,4 +19,8 @@ class CustomerController extends Controller
         $data = array('title' => 'Testimonial');
         return view('customer.testimonials', $data);
     }
+    public function customermerk() {
+        $data = array('title' => 'merk');
+        return view('customer.merkcustomer', $data);
+    }
 }

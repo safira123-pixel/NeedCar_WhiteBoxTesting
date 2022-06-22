@@ -11,7 +11,7 @@ class Transaction extends Model
 
     protected $table = 'transaction';
     protected $dates = ['deleted_at'];
-    protected $fillable = ['car_id','customer_id','rent_date','back_date','return_date','price','amount','penalty','status'];
+    protected $fillable = ['car_id','user_id','rent_date','back_date','return_date','price','amount','penalty','status'];
     public $incrementing = false;
 
     public function user()
