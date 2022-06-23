@@ -33,8 +33,8 @@ public function index()
         'name' => 'required',
         'desc' => 'required',
         'amount' => 'required',
-      'price' => 'required',
-         'status' => 'required'
+        'price' => 'required',
+        'status' => 'required'
     ]);
     $car = new Car;
     $car->code = $request->get('code');
@@ -46,11 +46,10 @@ public function index()
     $car->save();
 
     $merk = new Merk;
-    $merk->id = $request->get('name');
+    $merk->id = $request->get('merk');
 
     $car->merk()->associate($merk);
     $car->save();
-    // Car::create($request->all());
     
     //jika data berhasil ditambahkan, akan kembali ke halaman utama
     return redirect()->route('car.index')
@@ -88,7 +87,7 @@ $merk = Merk::all();
     $car->save();
 
     $merk = new Merk;
-    $merk->id = $request->get('name');
+    $merk->id = $request->get('merk');
 
  $car->merk()->associate($merk);
  $car->save();

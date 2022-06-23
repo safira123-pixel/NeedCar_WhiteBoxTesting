@@ -25,7 +25,7 @@ Car Edit
                     <label for="merk">Choose Merk</label>
                     <select name="merk" class="form-control" id="merk">
                         @foreach ($merk as $mrk)
-                        <option value="{{ $mrk->id }}" {{ ($car->merk_id == $mrk->id) ? 'selected' : '' }}>{{ $mrk->id }}</option>
+                        <option value="{{ $mrk->id }}" {{ ($car->merk_id == $mrk->id) ? 'selected' : '' }}>{{ $mrk->name }}</option>
                         @endforeach
                     </select>
                 </div>
