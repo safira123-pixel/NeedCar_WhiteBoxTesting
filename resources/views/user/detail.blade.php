@@ -9,10 +9,10 @@ Detail User
 </div>
 <div class="card-body">
 <ul class="list-group list-group-flush">
-<li class="list-group-item"><b>Name: </b>{{$User->name}}</li>
-<li class="list-group-item"><b>Email: </b>{{$User->email}}</li>
-<li class="list-group-item"><b>Phone: </b>{{$User->phone}}</li>
-<li class="list-group-item"><b>Address: </b>{{$User->address}}</li>
+<li class="list-group-item"><b>Name: </b>{{$Customer->user->name}}</li>
+<li class="list-group-item"><b>Email: </b>{{$Customer->user->email}}</li>
+<li class="list-group-item"><b>Phone: </b>{{$Customer->user->phone}}</li>
+<li class="list-group-item"><b>Address: </b>{{$Customer->user->address}}</li>
 </ul>
 </div>
 <a class="btn btn-success mt-3" href="{{ route('user.index') }}">Back</a>

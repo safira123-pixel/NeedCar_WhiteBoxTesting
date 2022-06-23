@@ -18,25 +18,41 @@ User Edit
 </ul>
 </div>
 @endif
-<form method="post" action="{{ route('user.update', $User->id) }}" id="myForm">
+<form method="post" action="{{ route('user.update', $Customer->id) }}" id="myForm">
 @csrf
 @method('PUT')
 <div class="form-group">
-<label for="name">Name</label>
-<input type="text" name="name" class="form-control" id="name" aria-describedby="name" >
-</div>
-<div class="form-group">
-<label for="email">Email</label>
-<input type="email" name="email" class="form-control" id="email" ariadescribedby="email" >
-</div>
-<div class="form-group">
-<label for="phone">Phone</label>
-<input type="phone" name="phone" class="form-control" id="phone" ariadescribedby="phone" >
-</div>
-<div class="form-group">
-<label for="address">Address</label>
-<input type="address" name="address" class="form-control" id="address" ariadescribedby="address" >
-</div>
+                    <label for="user">Name</label>
+                    <select name="user" class="form-control" id="user">
+                        @foreach ($user as $usr)
+                        <option value="{{ $usr->id }}" {{ ($customer->user_id == $usr->id) ? 'selected' : '' }}>{{ $usr->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="user">Email</label>
+                    <select name="user" class="form-control" id="user">
+                        @foreach ($user as $usr)
+                        <option value="{{ $usr->id }}" {{ ($customer->user_id == $usr->id) ? 'selected' : '' }}>{{ $usr->email }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="user">Phone</label>
+                    <select name="user" class="form-control" id="user">
+                        @foreach ($user as $usr)
+                        <option value="{{ $usr->id }}" {{ ($customer->user_id == $usr->id) ? 'selected' : '' }}>{{ $usr->phone }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="user">Address</label>
+                    <select name="user" class="form-control" id="user">
+                        @foreach ($user as $usr)
+                        <option value="{{ $usr->id }}" {{ ($customer->user_id == $usr->id) ? 'selected' : '' }}>{{ $usr->address }}</option>
+                        @endforeach
+                    </select>
+                </div>
 <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 </div>

@@ -31,4 +31,8 @@ class Transaction extends Model
     {
         return $this->belongsTo('App\Models\Car', 'car_id');
     }
+
+    public function transaction_car(){
+        return $this->belongsToMany(Transaction_Car::class);
+    }
 }

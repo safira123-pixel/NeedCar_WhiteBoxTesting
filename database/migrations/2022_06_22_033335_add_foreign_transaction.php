@@ -14,12 +14,12 @@ class AddForeignTransaction extends Migration
     public function up()
     {
         Schema::table('transaction', function (Blueprint $table) {
-            $table->unsignedBigInteger('car_id')->nullable();
+            $table->unsignedBigInteger('car_id')->nullable()->unique();
             $table->foreign('car_id')->references('id')->on('car')->onDelete('cascade');
         });
 
         Schema::table('transaction', function (Blueprint $table) {
-            $table->unsignedBigInteger('customer_id')->nullable();
+            $table->unsignedBigInteger('customer_id')->nullable()->unique();
             $table->foreign('customer_id')->references('id')->on('user')->onDelete('cascade');
         });
  

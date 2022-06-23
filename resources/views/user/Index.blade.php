@@ -28,19 +28,13 @@
 <th>Address</th>
 <th width="280px">Action</th>
 </tr>
-@foreach ($user as $usr)
+@foreach ($customer as $cust)
 <tr>
-<td>{{ $usr ->name }}</td>
-<td>{{ $usr ->email }}</td>
-<td>{{ $usr ->phone }}</td>
-<td>{{ $usr ->address }}</td>
+<td>{{ $cust ->user->name }}</td>
+<td>{{ $cust ->user->email }}</td>
+<td>{{ $cust ->user->phone }}</td>
+<td>{{ $cust ->user->address }}</td>
 <td>
-<a class="btn btn-primary" href="/admin/DataCustomer/{id_user}/edit">Edit</a>
-<form href="/admin/DataCustomer/{id_user}/destroy" method="POST">
-@csrf
-@method('DELETE')
-<button type="submit" class="btn btn-danger">Delete</button>
-</form>
 </td>
 </tr>
 @endforeach

@@ -44,9 +44,9 @@ Auth::routes();
   Route::get('homepage/testimonials', [HomepageController::class, 'testimonials'])->name('testimonials');
 
 // HOMEPAGE CUSTOMER
-  Route::get('/customer', [CustomerController::class, 'index'])->name('customer'); 
+  // Route::get('/customer', [CustomerController::class, 'index'])->name('customer'); 
   Route::get('/customer/about', [CustomerController::class, 'about']);
-  Route::get('customer/testimonials', [CustomerController::class, 'testimonials'])->name('testimonials');
+  Route::get('customer/testimonials', [CustomerController::class, 'testimonials'])->name('customer testimonials');
   Route::get('customer/merk', [CustomerController::class, 'customermerk'])->name('customermerk');
   Route::get('/contact-form', [App\Http\Controllers\ContactController::class, 'contactForm'])->name('contact-form');
   Route::post('/contact-form', [App\Http\Controllers\ContactController::class, 'storeContactForm'])->name('contact-form.store');
@@ -56,24 +56,24 @@ Auth::routes();
   //ADMIN
 
   Route::get('/admin/DataCustomer',[UserController::class, 'index'])->name(' Customer index');
-  Route::get('/admin/DataCustomer/create',[UserController::class, 'create'])->name(' Customer create');
-  Route::get('/admin/DataCustomer/{id}/edit',[UserController::class, 'edit'])->name('Customer.edit');
-    Route::get('/admin/DataCustomer/{id}/show',[UserController::class, 'show'])->name('Customer.show');
-    Route::get('/admin/DataCustomer/{id}/destroy',[UserController::class, 'destroy'])->name('Customer.destroy');
-    Route::post('/admin/DataCustomer/store',[UserController::class, 'store'])->name('Customer.store');
-    Route::post('/admin/DataCustomer/{id}/update',[UserController::class, 'update'])->name('Customer.update');
+  // Route::get('/admin/DataCustomer/create',[UserController::class, 'create'])->name(' Customer create');
+  // Route::get('/admin/DataCustomer/{id}/edit',[UserController::class, 'edit'])->name('Customer.edit');
+  //   Route::get('/admin/DataCustomer/{id}/show',[UserController::class, 'show'])->name('Customer.show');
+  //   Route::get('/admin/DataCustomer/{id}/destroy',[UserController::class, 'destroy'])->name('Customer.destroy');
+  //   Route::post('/admin/DataCustomer/store',[UserController::class, 'store'])->name('Customer.store');
+  //   Route::post('/admin/DataCustomer/{id}/update',[UserController::class, 'update'])->name('Customer.update');
 
-    Route::get('admin/merk/create',[MerkController::class, 'create'])->name(' merk.create');
-    Route::get('admin/merk/{id}/edit',[MerkController::class, 'edit'])->name('merk.edit');
-      Route::get('admin/merk/{id}/show',[MerkController::class, 'show'])->name('merk.show');
-      Route::get('admin/merk/{id}/destroy',[MerkController::class, 'destroy'])->name('merk.destroy');
-      Route::post('admin/merk/store',[MerkController::class, 'store'])->name('merk.store');
-      Route::post('admin/merk/{id}/update',[MerkController::class, 'update'])->name('merk.update');
+    // Route::get('admin/merk/create',[MerkController::class, 'create'])->name(' merk.create');
+    // Route::get('admin/merk/{id}/edit',[MerkController::class, 'edit'])->name('merk.edit');
+    //   Route::get('admin/merk/{id}/show',[MerkController::class, 'show'])->name('merk.show');
+    //   Route::get('admin/merk/{id}/destroy',[MerkController::class, 'destroy'])->name('merk.destroy');
+    //   Route::post('admin/merk/store',[MerkController::class, 'store'])->name('merk.store');
+    //   Route::post('admin/merk/{id}/update',[MerkController::class, 'update'])->name('merk.update');
   
   Route::group(['prefix' => 'admin'], function() {
 
     // route home admin
-    Route::get('/home', [DashboardController::class, 'index'])->name('admin home');
+    Route::get('/home', [DashboardController::class, 'index'])->name('home page');
 
     // route profile admin
     Route::get('/profile', [DashboardController::class, 'profile']);
@@ -89,14 +89,14 @@ Auth::routes();
     // Route::post('/merk/{id}/update',[MerkController::class, 'update'])->name('merk.update');
 
   // route Customer
-  //Route::resource('DataCustomer', UserController::class);
-    Route::get('/DataCustomer',[UserController::class, 'index'])->name(' Customer index');
-    Route::get('/DataCustomer/create',[UserController::class, 'create'])->name(' Customer create');
-    Route::get('/DataCustomer/{id_user}/edit',[UserController::class, 'edit'])->name('Customer.edit');
-    Route::get('/DataCustomer/{id_user}/show',[UserController::class, 'show'])->name('Customer.show');
-    Route::get('/DataCustomer/{id_user}/destroy',[UserController::class, 'destroy'])->name('Customer.destroy');
-    Route::post('/DataCustomer/store',[UserController::class, 'store'])->name('Customer.store');
-    Route::post('/DataCustomer/{id_user}/update',[UserController::class, 'update'])->name('Customer.update');
+  Route::resource('DataCustomer', UserController::class);
+    // Route::get('/DataCustomer',[UserController::class, 'index'])->name(' Customer index');
+    // Route::get('/DataCustomer/create',[UserController::class, 'create'])->name(' Customer create');
+    // Route::get('/DataCustomer/{id_user}/edit',[UserController::class, 'edit'])->name('Customer.edit');
+    // Route::get('/DataCustomer/{id_user}/show',[UserController::class, 'show'])->name('Customer.show');
+    // Route::get('/DataCustomer/{id_user}/destroy',[UserController::class, 'destroy'])->name('Customer.destroy');
+    // Route::post('/DataCustomer/store',[UserController::class, 'store'])->name('Customer.store');
+    // Route::post('/DataCustomer/{id_user}/update',[UserController::class, 'update'])->name('Customer.update');
 
     // route car
      Route::resource('car', CarController::class);
@@ -126,7 +126,7 @@ Auth::routes();
   // admin protected routes
   Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin'], function () {
     Route::group(['prefix' => 'admin'], function() {
-      Route::get('/home', [DashboardController::class, 'index'])->name('admin home');
+      Route::get('/home', [DashboardController::class, 'index'])->name('dashboard');
     });
 
   });

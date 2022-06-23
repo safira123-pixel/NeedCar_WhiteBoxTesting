@@ -25,4 +25,8 @@ class Car extends Model
         return $this->belongsTo('App\Models\Merk', 'merk_id');
     }
 
+    public function transaction_car(){
+        return $this->belongsToMany(Transaction_Car::class);
+    }
+
 }
