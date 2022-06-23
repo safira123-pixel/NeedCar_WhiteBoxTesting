@@ -12,86 +12,91 @@ use Carbon\Carbon;
 class MerkController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->merk = new Merk();
-    }
+public function index()
+{
+//fungsi eloquent menampilkan data menggunakan pagination
+$data = array('title' => 'Car Merk Data');
+$merk = Merk::all(); // Mengambil semua isi tabel
+$paginate = Merk::orderBy('id', 'asc')->paginate(3);
+return view('merk.index', ['merk' => $merk,'paginate'=>$paginate], $data);
+}
 
-    public function index(Request $request)
-    {
-        $merk = Merk::get();
-        $data = array('title' => 'Merk Home');
-        $paginate = merk::orderBy('id', 'asc')->paginate(3);
-        return view('merk.index', ['merk' => $merk,'paginate'=>$paginate], $data);
-    }
+public function create()
+{
+$data = array('title' => 'Data Create Merk');
+return view('merk.create', $data);
+}
 
-    public function create()
-    {        
-        $data = array('title' => 'Merk Form');
-        return view('merk.create', $data);
-    }
+public function store(Request $request)
+{
+//melakukan validasi data
+$request->validate([
+'Code' => 'required',
+'Name' => 'required',
+'Slug' => 'required',
+'Description' => 'required',
+'Status' => 'required',
+]);
+//fungsi eloquent untuk menambah data
+$merk = new Merk;
+    $merk->merk_code = $request->get('Code');
+    $merk->merk_name = $request->get('Name');
+    $merk->merk_slug = $request->get('Slug');
+    $merk->merk_description = $request->get('Description');
+    $merk->merk_status = $request->get('Status');
+    $merk->save();
+    //jika data berhasil ditambahkan, akan kembali ke halaman utama
+return redirect()->route('merk.index')
+->with('success', 'Merk Added');
+}
 
-    public function store(Request $request)
-    {
-        $this->validate($request, [
-            'merk_code' => 'required|unique:merk',
-            'merk_name'=>'required',
-            'merk_slug' => 'required',
-            'merk_description' => 'required',
-            'merk_status' => 'required',
-            'merk_photo' => 'required'
-        ]);
-        $merk = new Merk;
-        $merk->merk_code = $request->get('merk_code');
-        $merk->merk_name = $request->get('merk_name');
-        $merk->merk_slug = $request->get('merk_slug');
-        $merk->merk_description = $request->get('merk_description');
-        $merk->merk_status = $request->get('merk_status');
-        $merk->merk_photo = $image_name ;
-        $merk->save();
+public function show($id)
+{
+//menampilkan detail data dengan menemukan/berdasarkan Nim Mahasiswa
+$data = array('title' => 'Data Show Merk');
+$Merk = Merk::where('id', $id)->first();
+return view('merk.detail', compact('Merk'), $data);
+}
 
-        return redirect()->route('merk.index')
-        ->with('success', 'Merk Added!');
+public function edit($id)
+{
+//menampilkan detail data dengan menemukan berdasarkan Nim Mahasiswa untuk diedit
+$data = array('title' => 'Data Edit Merk');
+$Merk = DB::table('merk')->where('id', $id)->first();
+return view('merk.edit', compact('Merk'), $data);
+}
 
-    }
+public function update(Request $request, $id)
+{
+//melakukan validasi data
+$request->validate([
+    'Code' => 'required',
+    'Name' => 'required',
+    'Slug' => 'required',
+    'Description' => 'required',
+    'Status' => 'required',
+]);
+//fungsi eloquent untuk mengupdate data inputan kita
+$merk = Merk::where('id', $id)->first;
+    $merk->merk_code = $request->get('Code');
+    $merk->merk_name = $request->get('Name');
+    $merk->merk_slug = $request->get('Slug');
+    $merk->merk_description = $request->get('Description');
+    $merk->merk_status = $request->get('Status');
 
-    public function edit($id)
-    {
-        $data = array('title' => 'Edit Form');
-        $merk = Merk::where('merk_code', $merk_code)->get();
-         return view('merk.edit', $data);
-    }
+    $merk->save();
 
-    public function update(Request $request, $id)
-    {
-        $this->validate($request, [
-            'merk_code'=>'required',
-            'merk_name'=>'required',
-            'merk_slug' => 'required',
-            'merk_description' => 'required',
-            'merk_status' => 'required',
-            'merk_photo' => 'required'
-        ]);
-        $merk = Merk::where('id', $id)->first();
-        $merk->merk_code = $request->get('merk_code');
-        $merk->merk_name = $request->get('merk_name');
-        $merk->merk_slug = $request->get('merk_slug');
-        $merk->merk_description = $request->get('merk_description');
-        $merk->merk_status = $request->get('merk_status');
-    
-        if($merk->merk_photo && file_exists(storage_path('./app/public/images'. $merk->merk_photo))){
-          Storage::delete(['./public/images', $merk->merk_photo]); }
-    
-      $image_name = $request->file('merk_photo')->store('image', 'public');
-      $merk->merk_photo = $image_name;
-        $merk->save();
-    }
+//jika data berhasil diupdate, akan kembali ke halaman utama
+return redirect()->route('merk.index')
+->with('success', 'Merk Updated!');
+}
 
-    public function destroy($id)
-    {
-        Merk::where('merk_code', $merk_code)->delete();
- return redirect()->route('merk.index')
- -> with('success', 'merk Deleted');
-    }
+public function destroy( $id)
+{
+//fungsi eloquent untuk menghapus data
+Merk::where('id', $id)->delete();
+return redirect()->route('merk.index')
+-> with('success', 'Merk Deleted!');
+}
 
 }
