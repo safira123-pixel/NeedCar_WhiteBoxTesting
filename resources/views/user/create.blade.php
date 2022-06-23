@@ -5,7 +5,7 @@
 <div class="row justify-content-center align-items-center">
 <div class="card" style="width: 24rem;">
 <div class="card-header">
-User Edit
+Create User
 </div>
 <div class="card-body">
 @if ($errors->any())
@@ -18,9 +18,8 @@ User Edit
 </ul>
 </div>
 @endif
-<form method="post" action="{{ route('user.update', $User->id) }}" id="myForm">
+<form method="post" action="{{ route('user.store') }}" id="myForm">
 @csrf
-@method('PUT')
 <div class="form-group">
 <label for="name">Name</label>
 <input type="text" name="name" class="form-control" id="name" aria-describedby="name" >
@@ -35,7 +34,7 @@ User Edit
 </div>
 <div class="form-group">
 <label for="address">Address</label>
-<input type="address" name="address" class="form-control" id="address" ariadescribedby="address" >
+<input type="text" name="address" class="form-control" id="address" ariadescribedby="address" >
 </div>
 <button type="submit" class="btn btn-primary">Submit</button>
 </form>
