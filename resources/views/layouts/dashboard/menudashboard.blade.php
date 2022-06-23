@@ -31,7 +31,7 @@
       </ul>
     </li>
     <li class="nav-item has-treeview">
-      <a href="/admin/DataCustomer" class="nav-link">
+      <a href="admin/DataCustomer" class="nav-link">
         <i class="nav-icon fas fa-folder-open"></i>
         <p>
           User Data

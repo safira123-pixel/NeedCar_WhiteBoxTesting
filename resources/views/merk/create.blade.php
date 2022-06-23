@@ -21,24 +21,12 @@ Create Merk
 <form method="post" action="{{ route('merk.store') }}" id="myForm">
 @csrf
 <div class="form-group">
-<label for="merk_code">Code</label>
-<input type="text" name="merk_code" class="form-control" id="merk_code" aria-describedby="merk_code" >
+<label for="code">Code</label>
+<input type="text" name="code" class="form-control" id="code" aria-describedby="code" >
 </div>
 <div class="form-group">
-<label for="merk_name">Name</label>
-<input type="merk_name" name="merk_name" class="form-control" id="merk_name" ariadescribedby="merk_name" >
-</div>
-<div class="form-group">
-<label for="merk_slug">Slug</label>
-<input type="merk_slug" name="merk_slug" class="form-control" id="merk_slug" ariadescribedby="merk_slug" >
-</div>
-<div class="form-group">
-<label for="merk_decription">Decription</label>
-<input type="text" name="merk_decription" class="form-control" id="merk_decription" ariadescribedby="merk_decription" >
-</div>
-<div class="form-group">
-<label for="merk_status">Status</label>
-<input type="merk_status" name="merk_status" class="form-control" id="merk_status" ariadescribedby="merk_status" >
+<label for="name">Name</label>
+<input type="name" name="name" class="form-control" id="name" ariadescribedby="name" >
 </div>
 <button type="submit" class="btn btn-primary">Submit</button>
 </form>

@@ -5,7 +5,7 @@
 <div class="row justify-content-center align-items-center">
 <div class="card" style="width: 24rem;">
 <div class="card-header">
-Merk Edit
+Create Merk
 </div>
 <div class="card-body">
 @if ($errors->any())
@@ -18,9 +18,8 @@ Merk Edit
 </ul>
 </div>
 @endif
-<form method="post" action="{{ route('merk.update', $Merk->id) }}" id="myForm">
+<form method="post" action="{{ route('merk.store') }}" id="myForm">
 @csrf
-@method('PUT')
 <div class="form-group">
 <label for="merk_code">Code</label>
 <input type="text" name="merk_code" class="form-control" id="merk_code" aria-describedby="merk_code" >
@@ -34,18 +33,13 @@ Merk Edit
 <input type="merk_slug" name="merk_slug" class="form-control" id="merk_slug" ariadescribedby="merk_slug" >
 </div>
 <div class="form-group">
-<label for="merk_description">Description</label>
-<input type="merk_description" name="merk_description" class="form-control" id="merk_description" ariadescribedby="merk_description" >
+<label for="merk_decription">Decription</label>
+<input type="text" name="merk_decription" class="form-control" id="merk_decription" ariadescribedby="merk_decription" >
 </div>
 <div class="form-group">
 <label for="merk_status">Status</label>
 <input type="merk_status" name="merk_status" class="form-control" id="merk_status" ariadescribedby="merk_status" >
 </div>
-<!-- <div class="form-group">
-<label for="File">Photo</label>
-<input type="file" name="merkfile" class="form-control" value="{{ $Merk->merk_photo }}" id="File" ariadescribedby="File" >
-<img style="width: 100%" src="{{ asset('./storage/public/'. $Merk->merk_photo) }}" alt="">
-</div> -->
 <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 </div>

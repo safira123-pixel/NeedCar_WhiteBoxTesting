@@ -20,7 +20,7 @@ class AddForeignTransaction extends Migration
 
         Schema::table('transaction', function (Blueprint $table) {
             $table->unsignedBigInteger('customer_id')->nullable();
-            $table->foreign('customer_id')->references('id')->on('customer')->onDelete('cascade');
+            $table->foreign('customer_id')->references('id')->on('user')->onDelete('cascade');
         });
  
     }

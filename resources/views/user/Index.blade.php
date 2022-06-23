@@ -7,7 +7,6 @@
 <h2>User Data</h2>
 </div>
 <div class="float-right my-2">
-<!-- <a class="btn btn-success" href="admin/DataCustomer/create"> Input User</a> -->
 </div>
 </div>
 </div>
@@ -36,9 +35,7 @@
 <td>{{ $usr ->phone }}</td>
 <td>{{ $usr ->address }}</td>
 <td>
-<!-- <a class="btn btn-info" href="/admin/DataCustomer/{id_user}/show">Show</a> -->
 <a class="btn btn-primary" href="/admin/DataCustomer/{id_user}/edit">Edit</a>
-<br>
 <form href="/admin/DataCustomer/{id_user}/destroy" method="POST">
 @csrf
 @method('DELETE')

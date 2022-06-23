@@ -30,7 +30,7 @@ class UserSeeder extends Seeder
             'phone' => '081370587320',
             'address' => 'Jl. Simpang Pisang Kipas, Jatimulyo, Kec. Lowokwaru, Kota Malang, Jawa Timur 65141',
             'password' => Hash::make('useruser'),
-            'role' => 'customer',
+            'role' => 'user',
         ]);
     }
 }

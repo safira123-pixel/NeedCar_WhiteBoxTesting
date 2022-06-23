@@ -22,30 +22,13 @@ Merk Edit
 @csrf
 @method('PUT')
 <div class="form-group">
-<label for="merk_code">Code</label>
-<input type="text" name="merk_code" class="form-control" id="merk_code" aria-describedby="merk_code" >
+<label for="code">Code</label>
+<input type="text" name="code" class="form-control" id="code" aria-describedby="code" >
 </div>
 <div class="form-group">
-<label for="merk_name">Name</label>
-<input type="merk_name" name="merk_name" class="form-control" id="merk_name" ariadescribedby="merk_name" >
+<label for="name">Name</label>
+<input type="name" name="name" class="form-control" id="name" ariadescribedby="name" >
 </div>
-<div class="form-group">
-<label for="merk_slug">Slug</label>
-<input type="merk_slug" name="merk_slug" class="form-control" id="merk_slug" ariadescribedby="merk_slug" >
-</div>
-<div class="form-group">
-<label for="merk_description">Description</label>
-<input type="merk_description" name="merk_description" class="form-control" id="merk_description" ariadescribedby="merk_description" >
-</div>
-<div class="form-group">
-<label for="merk_status">Status</label>
-<input type="merk_status" name="merk_status" class="form-control" id="merk_status" ariadescribedby="merk_status" >
-</div>
-<!-- <div class="form-group">
-<label for="File">Photo</label>
-<input type="file" name="merkfile" class="form-control" value="{{ $Merk->merk_photo }}" id="File" ariadescribedby="File" >
-<img style="width: 100%" src="{{ asset('./storage/public/'. $Merk->merk_photo) }}" alt="">
-</div> -->
 <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 </div>

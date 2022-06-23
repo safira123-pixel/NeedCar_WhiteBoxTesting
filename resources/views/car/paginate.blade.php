@@ -4,11 +4,12 @@
 <div class="row">
   <div class="col-lg-12 margin-tb">
     <div class="pull-left mt-2">
-      <h2>transaction Data</h2>
+      <h2> </h2>
     </div>
+
     <div class="float-right my-2">
-      <a class="btn btn-info" href="{{ route('transaction.index') }}"> Home</a>
-      <a class="btn btn-success" href="{{ route('transaction.create') }}"> Input</a>
+      <a class="btn btn-info" href="{{ route('car.index') }}"> Home</a>
+      <a class="btn btn-success" href="{{ route('car.create') }}"> Input Car</a>
     </div>
   </div>
 </div>
@@ -25,27 +26,28 @@
 
 <table class="table table-bordered">
   <tr>
-    <th>Rent Date</th>
-    <th>Back Date</th>
-    <th>Return Date</th>
-    <th>Price</th>
+    <th>Merk</th>
+    <th>Code</th>
+    <th>Name</th>
+    <th>Description</th>
     <th>Amount</th>
-    <th>Penalty</th>   
+    <th>Price</th>
     <th>Status</th>
     <th width="280px">Action</th>
   </tr>
   @if(!empty($paginate) && $paginate->count())
-    @foreach($paginate as $transactions)
+    @foreach($paginate as $crk)
       <tr>
-        <td>{{ $transactions->rent_date }}</td>
-        <td>{{ $transactions->back_date }}</td>
-        <td>{{ $transactions->return_date }}</td>
-        <td>{{ $transactions->price }}</td>
-        <td>{{ $transactions->amount }}</td>
-        <td>{{ $transactions->penalty }}</td>
-        <td>{{ $transactions->status }}</td>
-          <form action="{{ route('transaction.destroy',['transaction'=>$transactions->id_transaction]) }}" method="POST">
-            <a class="btn btn-primary btn-sm" href="{{ route('transaction.edit',$transactions->id_transaction) }}">Edit</a>
+      <td>{{ $crk->merk->name }}</td>        
+      <td>{{ $crk->code }}</td>
+        <td>{{ $crk->name }}</td>
+        <td>{{ $crk->desc }}</td>
+        <td>{{ $crk->amount }}</td>
+        <td>{{ $crk->price }}</td>
+        <td>{{ $crk->status }}</td>
+        <td>
+          <form action="{{ route('car.destroy',['car'=>$crk->id]) }}" method="POST">
+            <a class="btn btn-primary btn-sm" href="{{ route('car.edit',$crk->id) }}">Edit</a>
             @csrf
             @method('DELETE')
             <button type="submit" class="btn btn-danger btn-sm">Delete</button>

@@ -13,7 +13,7 @@
           <a class="nav-link" href="{{ url('/customer') }}"><i class='fas fas fa-home'></i> Homepage</a>
         </li>
         <li class="nav-item active has-treeview">
-          <a class="nav-link" href="/find-car"><i class='fas fa-car-alt'></i> Find Car</a>
+          <a class="nav-link" href="customer/findcar"><i class='fas fa-car-alt'></i> Find Car</a>
         </li>
         <li class="nav-item active has-treeview">
           <a class="nav-link" href="customer/merk"><i class='fas fa-car-alt'></i> Find Merk</a>

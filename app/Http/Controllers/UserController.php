@@ -12,7 +12,7 @@ class UserController extends Controller
    //fungsi eloquent menampilkan data menggunakan pagination
    $data = array('title' => 'User Data');
    $user = User::all(); // Mengambil semua isi tabel
-   $paginate = User::orderBy('id_user', 'asc')->paginate(3);
+   $paginate = User::orderBy('id', 'asc')->paginate(3);
    return view('user.index', ['user' => $user,'paginate'=>$paginate], $data);
    }
    

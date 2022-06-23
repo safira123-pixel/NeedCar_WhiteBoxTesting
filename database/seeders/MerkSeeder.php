@@ -16,49 +16,28 @@ class MerkSeeder extends Seeder
     public function run()
     {
         DB::table('merk')->insert([
-            'merk_code' => '1',
-            'merk_name' => 'Toyota',
-            'merk_slug' => '1',
-            'merk_description' => 'Toyota Merk',
-            'merk_status' => 'active',
-            'merk_photo' => 'LogoToyota'
-
+            'code' => '1',
+            'name' => 'Toyota'
         ]);
 
         DB::table('merk')->insert([
-            'merk_code' => '2',
-            'merk_name' => 'Suzuki',
-            'merk_slug' => '2',
-            'merk_description' => 'Suzuki Merk',
-            'merk_status' => 'active',
-            'merk_photo' => 'LogoSuzuki'
+            'code' => '2',
+            'name' => 'Suzuki'
         ]);
 
         DB::table('merk')->insert([
-            'merk_code' => '3',
-            'merk_name' => 'Honda',
-            'merk_slug' => '3',
-            'merk_description' => 'Honda Merk',
-            'merk_status' => 'active',
-            'merk_photo' => 'LogoHonda'
+            'code' => '3',
+            'name' => 'Honda'
         ]);
 
         DB::table('merk')->insert([
-            'merk_code' => '4',
-            'merk_name' => 'Mitsubishi',
-            'merk_slug' => '4',
-            'merk_description' => 'Mitsubishi Merk',
-            'merk_status' => 'active',
-            'merk_photo' => 'LogoMitsubishi'
+            'code' => '4',
+            'name' => 'Mitsubishi'
         ]);
 
         DB::table('merk')->insert([
-            'merk_code' => '5',
-            'merk_name' => 'BMW',
-            'merk_slug' => '5',
-            'merk_description' => 'BMW Merk',
-            'merk_status' => 'active',
-            'merk_photo' => 'LogoBMW'
+            'code' => '5',
+            'name' => 'BMW'
         ]);
     }
 }

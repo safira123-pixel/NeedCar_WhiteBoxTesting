@@ -12,90 +12,95 @@ class CarController extends Controller
 */
 
 public function index()
-   {
-      $caritem = Car::orderBy('created_at', 'desc')->paginate(20);
-      $data = array('title' => 'Car',
-                  'caritem' => $caritem);
-         return view('car.index', $data);
-                
-    }
-
-   public function create()
-   {
-    $merkitem = Merk::orderBy('created_at', 'desc')->paginate(20);
-       $caritem = Merk::orderBy('merk_name', 'asc')->get();
-       $data = array('title' => 'Form Create Car',
-                   'merkitem' => $merkitem);
-       return view('car.create', $data);
-   }
-
-   public function store(Request $request)
     {
-        $this->validate($request, [
-            'merk_id' => 'required',
-            'car_code' => 'required|unique:car',
-            'car_name' => 'required',
-            'car_slug' => 'required',
-            'car_description' => 'required',
-            'car_photo' => 'required',
-            'car_amount' => 'required|numeric',
-            'car_price' => 'required|numeric'
-        ]);
-        // $caritem = $request->user();//ambil data user yang login
-        $slug = \Str::slug($request->car_slug);//buat slug dari input slug produk
-        $inputan = $request->all();
-        $inputan['car_slug'] = $slug;
-        $inputan['user_id'] = $itemuser->id;
-        $inputan['status'] = 'publish';
-        $caritem = Car::create($inputan);
-        return redirect()->route('car.index')->with('success', 'Data berhasil disimpan');
+        $data = array('title' => '');
+        $car = Car::with('merk')->get();
+        $paginate = Car::orderBy('id', 'asc')->paginate(3);
+        return view('car.index', ['car' => $car,'paginate'=>$paginate], $data);
     }
+ public function create()
+ {
+    $data = array('title' => 'Car Data');
+    $merk =Merk::all(); // mendapatkan data dari tabel merk
+    return view('car.create',['merk' => $merk], $data);
+ }
+ public function store(Request $request)
+ {
+    //melakukan validasi data
+    $request->validate([
+        'merk' => 'required',
+        'code' => 'required',
+        'name' => 'required',
+        'desc' => 'required',
+        'amount' => 'required',
+      'price' => 'required',
+         'status' => 'required'
+    ]);
+    $car = new Car;
+    $car->code = $request->get('code');
+    $car->name = $request->get('name');
+    $car->desc = $request->get('desc');
+    $car->amount = $request->get('amount');
+    $car->price = $request->get('price');
+    $car->status = $request->get('status');
+    $car->save();
 
-public function edit($id)
-   {
-       $caritem = Car::findOrFail($id);
-       $merkitem = Merk::orderBy('merk_name', 'asc')->get();
-       $data = array('title' => 'Form Edit Car',
-               'caritem' => $caritem,
-               'merkitem' => $merkitem);
-       return view('car.edit', $data);
-   }
+    $merk = new Merk;
+    $merk->id = $request->get('name');
 
-public function update(Request $request, $id)
-    {
-        $this->validate($request, [
-            'car_name' => 'required',
-            'car_slug' => 'required',
-            'car_description' => 'required',
-            'car_photo' => 'required',
-            'car_amount' => 'required|numeric',
-            'car_price' => 'required|numeric'
-        ]);
-        $caritem = Car::findOrFail($id);
-        // kalo ga ada error page not found 404
-        $slug = \Str::slug($request->car_slug);//slug kita gunakan nanti pas buka produk
-        // kita validasi dulu, biar tidak ada slug yang sama
-        $validasislug = Car::where('id', '!=', $id)//yang id-nya tidak sama dengan $id
-                                ->where('car_slug', $slug)
-                                ->first();
-        if ($validasislug) {
-            return back()->with('error', 'Slug sudah ada, coba yang lain');
-        } else {
-            $inputan = $request->all();
-            $inputan['slug'] = $slug;
-            $caritem->update($inputan);
-            return redirect()->route('car.index')->with('success', 'Data berhasil diupdate');
-        }
-    }
+    $car->merk()->associate($merk);
+    $car->save();
+    // Car::create($request->all());
+    
+    //jika data berhasil ditambahkan, akan kembali ke halaman utama
+    return redirect()->route('car.index')
+    ->with('success', 'Car Berhasil Ditambahkan');
+ }
+ 
+ public function edit($id)
+ {
+//menampilkan detail data dengan menemukan berdasarkan Nim Car untuk diedit
+$data = array('title' => 'Car Data');
+ $car = Car::with('merk')->where('id', $id)->first();
+$merk = Merk::all();
+ return view('car.edit', compact('car', 'merk'), $data);
+ }
+ public function update(Request $request, $id)
+ {
+//melakukan validasi data
+ $request->validate([
+ 'merk' => 'required',
+ 'code' => 'required',
+ 'name' => 'required',
+ 'desc' => 'required',
+ 'amount' => 'required',
+ 'price' => 'required',
+ 'status' => 'required'
+ ]);
 
-   public function destroy($id)
-   {
-       $caritem = Car::findOrFail($id);//cari berdasarkan id = $id, 
-       // kalo ga ada error page not found 404
-       if ($caritem->delete()) {
-           return back()->with('success', 'Data Deleted');
-       } else {
-           return back()->with('error', 'Data cannot been Deleted');
-       }
-   }
+ $car = Car::with('merk')->where('id', $id)->first();
+    $car->code = $request->get('code');
+    $car->name = $request->get('name');
+    $car->desc = $request->get('desc');
+    $car->amount = $request->get('amount');
+  $car->price = $request->get('price');
+  $car->status = $request->get('status');
+    $car->save();
+
+    $merk = new Merk;
+    $merk->id = $request->get('name');
+
+ $car->merk()->associate($merk);
+ $car->save();
+//jika data berhasil diupdate, akan kembali ke halaman utama
+ return redirect()->route('car.index')
+ ->with('success', 'Car Berhasil Diupdate');
+ }
+ public function destroy( $id)
+ {
+//fungsi eloquent untuk menghapus data
+ Car::where('id', $id)->delete();
+ return redirect()->route('car.index')
+ -> with('success', 'Car Berhasil Dihapus');
+ }
 }; 

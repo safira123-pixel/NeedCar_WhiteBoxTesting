@@ -31,19 +31,14 @@ public function store(Request $request)
 {
 //melakukan validasi data
 $request->validate([
-'Code' => 'required',
-'Name' => 'required',
-'Slug' => 'required',
-'Description' => 'required',
-'Status' => 'required',
+'code' => 'required',
+'name' => 'required',
+
 ]);
 //fungsi eloquent untuk menambah data
 $merk = new Merk;
-    $merk->merk_code = $request->get('Code');
-    $merk->merk_name = $request->get('Name');
-    $merk->merk_slug = $request->get('Slug');
-    $merk->merk_description = $request->get('Description');
-    $merk->merk_status = $request->get('Status');
+    $merk->code = $request->get('code');
+    $merk->name = $request->get('name');
     $merk->save();
     //jika data berhasil ditambahkan, akan kembali ke halaman utama
 return redirect()->route('merk.index')
@@ -70,21 +65,15 @@ public function update(Request $request, $id)
 {
 //melakukan validasi data
 $request->validate([
-    'Code' => 'required',
-    'Name' => 'required',
-    'Slug' => 'required',
-    'Description' => 'required',
-    'Status' => 'required',
+    'code' => 'required',
+    'name' => 'required'
 ]);
 //fungsi eloquent untuk mengupdate data inputan kita
-$merk = Merk::where('id', $id)->first;
-    $merk->merk_code = $request->get('Code');
-    $merk->merk_name = $request->get('Name');
-    $merk->merk_slug = $request->get('Slug');
-    $merk->merk_description = $request->get('Description');
-    $merk->merk_status = $request->get('Status');
-
-    $merk->save();
+Merk::where('id', $id)
+->update([
+'code'=>$request->code,
+'name'=>$request->name,
+]);
 
 //jika data berhasil diupdate, akan kembali ke halaman utama
 return redirect()->route('merk.index')

@@ -13,14 +13,12 @@ class Car extends Model
     protected $dates = ['deleted_at'];
     protected $fillable = [
         'merk_id',
-        'car_code',
-        'car_name',
-        'car_slug',
-        'car_description',
-        'car_photo',
-        'car_amount',
-        'car_price',
-        'car_status',
+        'code',
+        'name',
+        'desc',
+        'amount',
+        'price',
+        'status',
     ];
 
     public function merk() {
