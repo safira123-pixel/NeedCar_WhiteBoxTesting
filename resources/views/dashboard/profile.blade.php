@@ -52,7 +52,7 @@
             Alamat
           </strong>
           <p class="text-muted">
-            Jalan 
+            Jalan Tirtoutomo 58 A
           </p>
           <hr>
           <strong>
@@ -68,7 +68,7 @@
             No Tlp
           </strong>
           <p class="text-muted">
-            (WhatsApp)+6285236374355
+            (WhatsApp)+6285236374351
           </p>
           <hr>
         </div>

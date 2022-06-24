@@ -8,8 +8,7 @@
     </div>
 
     <div class="float-right my-2">
-      <a class="btn btn-info" href="{{ route('car.index') }}"> Home</a>
-      <a class="btn btn-success" href="{{ route('car.create') }}"> Input Car</a>
+      <a class="btn btn-info" href="{{ route('transaction.index') }}"> Home</a>
     </div>
   </div>
 </div>
@@ -26,28 +25,30 @@
 
 <table class="table table-bordered">
   <tr>
-    <th>Merk</th>
-    <th>Code</th>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Amount</th>
-    <th>Price</th>
-    <th>Status</th>
+  <th>Car</th>
+<th>Customer</th>
+<th>Rent Date</th>
+<th>Return Date</th>
+<th>Price</th>
+<th>Amount</th>
+<th>Penalty</th>
+<th>Status</th>
     <th width="280px">Action</th>
   </tr>
   @if(!empty($paginate) && $paginate->count())
-    @foreach($paginate as $crk)
+    @foreach($paginate as $trans)
       <tr>
-      <td>{{ $crk->merk->name }}</td>        
-      <td>{{ $crk->code }}</td>
-        <td>{{ $crk->name }}</td>
-        <td>{{ $crk->desc }}</td>
-        <td>{{ $crk->amount }}</td>
-        <td>{{ $crk->price }}</td>
-        <td>{{ $crk->status }}</td>
+      <td>{{ $trans ->car->name }}</td>
+<td>{{ $trans ->user->name }}</td>
+<td>{{ $trans ->rent_date }}</td>
+<td>{{ $trans ->return_date }}</td>
+<td>{{ $trans ->price }}</td>
+<td>{{ $trans ->amount }}</td>
+<td>{{ $trans ->penalty }}</td>
+<td>{{ $trans ->return_date }}</td>
+<td>{{ $trans ->status }}</td>
         <td>
-          <form action="{{ route('car.destroy',['car'=>$crk->id]) }}" method="POST">
-            <a class="btn btn-primary btn-sm" href="{{ route('car.edit',$crk->id) }}">Edit</a>
+          <form action="{{ route('transaction.destroy',['transaction'=>$trans->id]) }}" method="POST">
             @csrf
             @method('DELETE')
             <button type="submit" class="btn btn-danger btn-sm">Delete</button>

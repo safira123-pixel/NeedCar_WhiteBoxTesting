@@ -10,23 +10,23 @@
       <ul class="mr-auto navbar-nav"></ul>
       <ul class="navbar-nav">
         <li class="nav-item active">
-          <a class="nav-link" href="{{ url('/customer') }}"><i class='fas fas fa-home'></i> Homepage</a>
+          <a class="nav-link" href="{{ url('user/customer') }}"><i class='fas fas fa-home'></i> Homepage</a>
         </li>
         <li class="nav-item active has-treeview">
-          <a class="nav-link" href="customer/findcar"><i class='fas fa-car-alt'></i> Find Car</a>
+          <a class="nav-link" href="customer/datacar"><i class='fas fa-car-alt'></i> List Car</a>
         </li>
         <li class="nav-item active has-treeview">
-          <a class="nav-link" href="customer/merk"><i class='fas fa-car-alt'></i> Find Merk</a>
+          <a class="nav-link" href="customer/merk"><i class='fas fa-car-alt'></i> List Merk</a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link" href="/customer/cart"><i class='fas fas fa-shopping-basket'></i> Cart</a>
+          <a class="nav-link" href="/customer/transaksi"><i class='fas fas fa-shopping-basket'></i> Transaksi</a>
+        </li>
+        <!-- <li class="nav-item active">
+          <a class="nav-link" href="customer/testimonials-form"><i class='fas fas fas fa-pen'></i> Testimonials</a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link" href="/testimonials-form"><i class='fas fas fas fa-pen'></i> Testimonials</a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="/contact-form"><i class='fas fas fas fa-user-circle'></i> Contact Us</a>
-        </li>
+          <a class="nav-link" href="customer/contact-form"><i class='fas fas fas fa-user-circle'></i> Contact Us</a>
+        </li> -->
         <li class="nav-item active">
           <a class="nav-link" href="#" data-toggle="modal" data-target="#exampleModalLong"><i class='fas fa-sign-out-alt'></i> Logout</a>
         </li>

@@ -14,7 +14,6 @@ class Transaction extends Model
         'car_id',
         'user_id',
         'rent_date',
-        'back_date',
         'return_date',
         'price',
         'amount',

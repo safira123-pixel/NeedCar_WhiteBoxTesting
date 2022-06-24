@@ -17,6 +17,7 @@ use App\Http\Controllers\ContactController;
 
 
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -45,13 +46,15 @@ Auth::routes();
 
 // HOMEPAGE CUSTOMER
   // Route::get('/customer', [CustomerController::class, 'index'])->name('customer'); 
-  Route::get('/customer/about', [CustomerController::class, 'about']);
-  Route::get('customer/testimonials', [CustomerController::class, 'testimonials'])->name('customer testimonials');
-  Route::get('customer/merk', [CustomerController::class, 'customermerk'])->name('customermerk');
-  Route::get('/contact-form', [App\Http\Controllers\ContactController::class, 'contactForm'])->name('contact-form');
-  Route::post('/contact-form', [App\Http\Controllers\ContactController::class, 'storeContactForm'])->name('contact-form.store');
-  Route::get('/testimonials-form', [App\Http\Controllers\TestimonialsController::class, 'testimonialsForm'])->name('Testimonials-form');
-  Route::post('/testimonials-form', [App\Http\Controllers\TestimonialsController::class, 'storeTestimonialsForm'])->name('Testimonials-form.store');
+  // Route::get('/customer/about', [CustomerController::class, 'about']);
+  // Route::get('customer/testimonials', [CustomerController::class, 'testimonials'])->name('customer testimonials');
+  // Route::get('customer/merk', [CustomerController::class, 'customermerk'])->name('customermerk');
+  // Route::get('/contact-form', [App\Http\Controllers\ContactController::class, 'contactForm'])->name('contact-form');
+  // Route::post('/contact-form', [App\Http\Controllers\ContactController::class, 'storeContactForm'])->name('contact-form.store');
+  // Route::get('/testimonials-form', [App\Http\Controllers\TestimonialsController::class, 'testimonialsForm'])->name('Testimonials-form');
+  // Route::post('/testimonials-form', [App\Http\Controllers\TestimonialsController::class, 'storeTestimonialsForm'])->name('Testimonials-form.store');
+  // Route::get('customer/datacar', [CustomerController::class, 'datacar'])->name('car-Data');
+
 
   //ADMIN
 
@@ -73,7 +76,7 @@ Auth::routes();
   Route::group(['prefix' => 'admin'], function() {
 
     // route home admin
-    Route::get('/home', [DashboardController::class, 'index'])->name('home page');
+    // Route::get('/home', [DashboardController::class, 'index'])->name('home page');
 
     // route profile admin
     Route::get('/profile', [DashboardController::class, 'profile']);
@@ -109,6 +112,8 @@ Auth::routes();
       // Route::post('/admin/DataCustomer/{id_user}/update',[UserController::class, 'update'])->name('Customer.update');
 
     // route transaction
+    Route::resource('transaction', TransactionController::class);
+
 
     // route cart
 
@@ -121,6 +126,15 @@ Auth::routes();
   // customer detected route
     Route::group(['middleware' => ['auth', 'user'], 'prefix' => 'user'], function () {
     Route::get('/customer', [CustomerController::class, 'index'])->name('customer'); 
+    Route::get('/customer/about', [CustomerController::class, 'about']);
+  Route::get('customer/testimonials', [CustomerController::class, 'testimonials'])->name('customer testimonials');
+  Route::get('customer/merk', [CustomerController::class, 'customermerk'])->name('customermerk');
+  Route::get('/customer/datacar', [CustomerController::class, 'datacar'])->name('car-Data');
+  // Route::get('customer/contact-form', [App\Http\Controllers\ContactController::class, 'contactForm'])->name('contact-form');
+  // Route::post('/contact-form', [App\Http\Controllers\ContactController::class, 'storeContactForm'])->name('contact-form.store');
+  // Route::get('customer/testimonials-form', [App\Http\Controllers\TestimonialsController::class, 'testimonialsForm'])->name('Testimonials-form');
+  // Route::post('/testimonials-form', [App\Http\Controllers\TestimonialsController::class, 'storeTestimonialsForm'])->name('Testimonials-form.store');
+  Route::get('customer/datacar', [CustomerController::class, 'datacar'])->name('car-Data');
   });
   
   // admin protected routes

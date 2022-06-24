@@ -53,9 +53,15 @@
       @if(!empty($transaksi) && $transaksi->count())
         @foreach($transaksi as $tran)
           <tr>
-            <td>{{ $tran->nama_matkul }}</td>
-            <td>{{ $tran->sks }}</td>
-            <td>{{ $tran->semester }}</td>
+            <td>{{ $tran->car->name }}</td>
+            <td>{{ $tran->user->name }}</td>
+            <td>{{ $tran->rent_date }}</td>
+            <td>{{ $tran->back_date }}</td>
+            <td>{{ $tran->return_date }}</td>
+            <td>{{ $tran->price }}</td>
+            <td>{{ $tran->amount }}</td>
+            <td>{{ $tran->penalty }}</td>
+
             <td>
             </td>
           </tr>

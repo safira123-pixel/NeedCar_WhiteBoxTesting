@@ -40,7 +40,7 @@
       </a>
     </li>
     <li class="nav-item has-treeview">
-      <a href="admin/transaction" class="nav-link">
+      <a href="transaction" class="nav-link">
         <i class="nav-icon fas fa-shopping-cart"></i>
         <p>
           Transaction

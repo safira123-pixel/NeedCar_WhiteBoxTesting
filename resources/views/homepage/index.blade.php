@@ -51,7 +51,7 @@
           <div class="row mt-4">
             <div class="col">
             <button class="btn btn-light" href="#">
-                <h9> Rent Now </h9>
+                <h9> Coming Soon </h9>
               </button>
             </div>
             <div class="col-auto">
@@ -74,7 +74,7 @@
           <div class="row mt-4">
             <div class="col">
               <button class="btn btn-light" href="#">
-                <h9> Rent Now </h9>
+                <h9> Coming Soon </h9>
               </button>
             </div>
             <div class="col-auto">
@@ -92,12 +92,12 @@
           <img src="{{asset('images/AvanzaToyota.jpeg') }}" alt="foto produk" class="card-img-top">
         <div class="card-body">
             <p class="card-text">
-              <b>AVANZA TOYOTA</b>
+              <b>AZANSA TOYOTA</b>
             </p>
           <div class="row mt-4">
             <div class="col">
             <button class="btn btn-light" href="#">
-                <h9> Rent Now </h9>
+                <h9> Coming Soon </h9>
               </button>
             </div>
             <div class="col-auto">

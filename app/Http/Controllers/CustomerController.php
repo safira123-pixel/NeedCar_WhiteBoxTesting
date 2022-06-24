@@ -23,4 +23,9 @@ class CustomerController extends Controller
         $data = array('title' => 'merk');
         return view('customer.merkcustomer', $data);
     }
+    public function DataCar() {
+        $data = array('title' => 'car');
+        return view('customer.datacar', $data);
+    }
+
 }
